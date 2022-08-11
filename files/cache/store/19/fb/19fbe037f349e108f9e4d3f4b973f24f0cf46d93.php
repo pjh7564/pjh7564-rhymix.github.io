@@ -1,0 +1,2 @@
+<?php /* 2.0.21:site_and_module#39:module_extra_vars:188 */
+return unserialize('a:2:{i:0;i:1659143724;i:1;O:8:"stdClass":5:{s:14:"opage_proc_php";s:1:"N";s:14:"opage_proc_tpl";s:1:"N";s:21:"page_caching_interval";s:1:"5";s:9:"page_type";s:6:"WIDGET";s:7:"regdate";s:14:"20220729095102";}}');

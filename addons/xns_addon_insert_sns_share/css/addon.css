@@ -1,0 +1,32 @@
+.xns_addon_insert_sns_share {
+  position:relative; padding:10px 0px; overflow:hidden;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.xns_addon_insert_sns_share div,
+.xns_addon_insert_sns_share a,
+.xns_addon_insert_sns_share img,
+.xns_addon_insert_sns_share i {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.xns_addon_insert_sns_share a { text-underline:none; }
+
+.xns_addon_insert_sns_share .sns_area { position:relative; overflow:hidden; text-align:center; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area { position:relative; margin:0px 0px 10px 0px; overflow:hidden; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a { position:relative; width:50px; height:50px; margin:0px 5px; overflow:hidden; border-radius:10px; line-height:50px; font-size:18px; color:#fff; text-align:center; display:inline-block; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a.facebook { background-color: #4267B2; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a.twitter { background-color: #40bff5; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a.google-plus { background-color: #eb5e4c; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a.item_copy { background:#000; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a img { width:50px; height:50px; float:left; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a > i { font-size:25px; line-height:50px; }
+
+
+@media all and (max-width: 479px) {
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a { position:relative; width:40px; height:40px; margin:0px 3px; line-height:40px; font-size:15px; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a img { width:40px; height:40px; }
+.xns_addon_insert_sns_share .sns_area .sns_btn_area a > i { font-size:20px; line-height:40px; }
+}

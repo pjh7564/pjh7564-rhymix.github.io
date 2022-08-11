@@ -1,0 +1,16 @@
+<?php if(!defined("__XE__"))exit;
+$this->config->autoescape = 'on'; ?>
+<!--#Meta:modules/admin/tpl/js/config.js--><?php Context::loadFile(['modules/admin/tpl/js/config.js', '', '', '']); ?>
+<!--#Meta:modules/session/tpl/js/session.js--><?php Context::loadFile(['modules/session/tpl/js/session.js', '', '', '']); ?>
+<div class="x_page-header">
+	<h1><?php echo ($this->config->autoescape === 'on' ? htmlspecialchars($lang->menu_gnb_sub['adminConfigurationGeneral'], ENT_QUOTES, 'UTF-8', false) : ($lang->menu_gnb_sub['adminConfigurationGeneral'])) ?></h1>
+</div>
+<ul class="x_nav x_nav-tabs">
+	<li<?php if($__Context->act == 'dispAdminConfigGeneral' || preg_match('/^dispAdmin.+Domain/', $__Context->act)){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigGeneral'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigGeneral'))) ?>"><?php echo $lang->subtitle_site_info ?></a></li>
+	<li<?php if($__Context->act == 'dispAdminConfigNotification'){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigNotification'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigNotification'))) ?>"><?php echo $lang->subtitle_notification ?></a></li>
+	<li<?php if($__Context->act == 'dispAdminConfigSecurity'){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigSecurity'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigSecurity'))) ?>"><?php echo $lang->subtitle_security ?></a></li>
+	<li<?php if($__Context->act == 'dispAdminConfigAdvanced'){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigAdvanced'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigAdvanced'))) ?>"><?php echo $lang->subtitle_advanced ?></a></li>
+	<li<?php if($__Context->act == 'dispAdminConfigDebug'){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigDebug'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigDebug'))) ?>"><?php echo $lang->subtitle_debug ?></a></li>
+	<li<?php if($__Context->act == 'dispAdminConfigSEO'){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigSEO'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigSEO'))) ?>"><?php echo $lang->subtitle_seo ?></a></li>
+	<li<?php if($__Context->act == 'dispAdminConfigSitelock'){ ?> class="x_active"<?php } ?>><a href="<?php echo ($this->config->autoescape === 'on' ? htmlspecialchars(getUrl('', 'module', 'admin', 'act', 'dispAdminConfigSitelock'), ENT_QUOTES, 'UTF-8', false) : (getUrl('', 'module', 'admin', 'act', 'dispAdminConfigSitelock'))) ?>"><?php echo $lang->subtitle_sitelock ?></a></li>
+</ul>

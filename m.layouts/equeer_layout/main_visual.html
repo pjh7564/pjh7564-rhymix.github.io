@@ -1,0 +1,44 @@
+<div class="main-visual-wrapper" style="display: none"|cond="$layout_info->main_visual === 'N'">
+  <!--@if($layout_info->main_visual_custom === 'Y')-->
+    <!--@if($layout_info->main_visual_gradient === 'N')-->
+    <div class="main-visual-wrap" style="background: {$layout_info->main_visual_bg_color1}">
+    <!--@else-->
+    <div class="main-visual-wrap" style="background: linear-gradient(135deg, {$layout_info->main_visual_bg_color1}, {$layout_info->main_visual_bg_color2})">
+    <!--@end-->
+  <!--@else-->
+  <div class="main-visual-wrap">
+  <!--@end-->
+      {@ $_main_visual_img = $layout_info->main_visual_bg}
+      <div class="main-visual" style="background: url('{$_main_visual_img}') no-repeat center center; background-size: {$layout_info->main_visual_bg_size}"|cond="$_main_visual_img">
+        <div class="row-wrap">
+          <div class="row">
+            <h1>
+              <!--@if($layout_info->main_visual_text)-->
+              {$layout_info->main_visual_text}
+              <!--@else-->
+              Hello, equeer.
+              <!--@end-->
+            </h1>
+            <a class="btn_secondary_round" href="<!--@if($layout_info->main_visual_btn1_url)-->{$layout_info->main_visual_btn1_url}<!--@else-->{getUrl('')}<!--@end-->">
+              <span>
+                <!--@if($layout_info->main_visual_btn1_text)-->
+                {$layout_info->main_visual_btn1_text}
+                <!--@else-->
+                LEARN MORE
+                <!--@end-->
+              </span>
+            </a>
+            <a class="btn_white_roundLine" href="<!--@if($layout_info->main_visual_btn2_url)-->{$layout_info->main_visual_btn2_url}<!--@else-->{getUrl('')}<!--@end-->">
+              <span>
+                <!--@if($layout_info->main_visual_btn2_text)-->
+                {$layout_info->main_visual_btn2_text}
+                <!--@else-->
+                HOW TO USE
+                <!--@end-->
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

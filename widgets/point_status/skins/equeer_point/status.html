@@ -1,0 +1,13 @@
+
+<load target="css/widget.css" />
+
+<div class="widgetContainer<!--@if($colorset=="black")--> black<!--@end-->">
+    <div class="widgetPoint">
+        <div>Level. {$widget_info->level}</div>
+        <div class="graph">
+          <div style="width:{$widget_info->per}%"></div>
+        </div>
+        <div class="point">{number_format($widget_info->point)}/{number_format($widget_info->next_point)} {$widget_info->point_unit}</div>
+        <div class="percentage">{$widget_info->per}%</div>
+    </div>
+</div>

@@ -1,0 +1,2 @@
+<?php /* 2.0.21:site_and_module#22:module_action_xml:adminlogging:ko:1656940256 */
+return unserialize('a:2:{i:0;i:1659074233;i:1;O:8:"stdClass":9:{s:15:"admin_index_act";s:0:"";s:17:"default_index_act";s:0:"";s:15:"setup_index_act";s:0:"";s:22:"simple_setup_index_act";s:0:"";s:5:"route";O:8:"stdClass":2:{s:3:"GET";a:0:{}s:4:"POST";a:0:{}}s:6:"action";O:8:"stdClass":0:{}s:5:"grant";O:8:"stdClass":0:{}s:4:"menu";O:8:"stdClass":0:{}s:14:"error_handlers";a:0:{}}}');

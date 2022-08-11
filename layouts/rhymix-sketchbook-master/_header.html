@@ -1,0 +1,13 @@
+<include target="__setting.html" />
+<!--// 상단 html 출력 -->
+<!--@if(mobile::isMobileCheckByAgent() && isset($module_info->mobile_header_text) && $module_info->mobile_header_text)-->
+<div>{$module_info->mobile_header_text}</div>
+<!--@else-->
+<div>{$module_info->header_text}</div>
+<!--@end-->
+
+<div id="bd" class="bd">
+	<div class="bd_hd clear">
+		<!--// 빵조각 메뉴 -->
+		<include cond="!$mi->breadcrumb || $act=='dispBoardWrite'" target="_breadcrumb.html" />
+	</div>

@@ -1,0 +1,22 @@
+{@ // 본문 }
+<div class="app-article" cond="$oDocument->isExists()">
+  <include target="../article/article.html" />
+  
+  <a class="app-button" href="{getUrl('category', '', 'document_srl', '', 'page', '')}">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <span>목록</span>
+  </a>
+</div>
+
+{@ // 목록 }
+<block cond="!$oDocument->isExists()">
+  <include target="../head/head.html" />
+  
+  <!--@if($module_info->template == 'list')-->
+  <include target="../../templates/list/list.html" />
+  <!--@else-->
+  <include target="../../templates/sns/sns.html" />
+  <!--@end-->
+
+  <include target="../footer/footer.html" />
+</block>

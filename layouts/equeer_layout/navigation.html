@@ -1,0 +1,33 @@
+<div class="navigation_drawer">
+  <div>
+    <ul class="ac_menu mrg_at">
+      <li loop="$global_menu->list=>$key1,$val1" class="md-hide<!--@if($val1['selected'])--> active<!--@end--><!--@if($val1['list'])--> has-children<!--@end-->">
+        <!--@if($val1['list'])-->
+        <input type="checkbox" name ="group-{$key1}" id="group-{$key1}" class="md-hide<!--@if($val1['selected'])--> active<!--@end-->" checked="checked"|cond="$val1['selected']">
+        <label for="group-{$key1}">{$val1['link']}</label>
+
+        <ul cond="$val1['list']">
+          <li loop="$val1['list']=>$key2,$val2" class="<!--@if($val2['selected'])-->active<!--@end--><!--@if($val2['list'])--> has-children<!--@end-->">
+            <!--@if($val2['list'])-->
+            <input type="checkbox" name ="sub-group-{$key2}" id="sub-group-{$key2}">
+            <label for="sub-group-{$key2}">{$val2['link']}</label>
+
+            <ul cond="$val2['list']">
+              <li loop="$val2['list']=>$key3,$val3">
+                <a href="{$val3['href']}">{$val3['link']}</a>
+              </li>
+            </ul>
+
+            <!--@else-->
+            <a href="{$val2['href']}">{$val2['link']}</a>
+            <!--@end-->
+          </li>
+        </ul>
+
+        <!--@else-->
+        <a href="{$val1['href']}">{$val1['link']}</a>
+        <!--@end-->
+      </li>
+    </ul>
+  </div>
+</div>

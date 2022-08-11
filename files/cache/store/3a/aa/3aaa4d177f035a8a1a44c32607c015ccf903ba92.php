@@ -1,0 +1,2 @@
+<?php /* 2.0.21:editor#0:component:poll_maker:ko:1656940256 */
+return unserialize('a:2:{i:0;i:1659077492;i:1;O:8:"stdClass":9:{s:14:"component_name";s:10:"poll_maker";s:5:"title";s:12:"설문조사";s:11:"description";s:146:"글 작성시에 설문조사를 첨부할 수 있습니다. 설문조사 컴포넌트는 설문조사 모듈의 설정에 영향을 받습니다.";s:7:"version";s:3:"2.0";s:4:"date";s:8:"20150609";s:8:"homepage";s:0:"";s:7:"license";s:0:"";s:12:"license_link";s:0:"";s:6:"author";a:1:{i:0;O:8:"stdClass":3:{s:4:"name";s:5:"NAVER";s:13:"email_address";s:27:"developers@xpressengine.com";s:8:"homepage";s:24:"http://xpressengine.com/";}}}}');

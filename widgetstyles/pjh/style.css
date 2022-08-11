@@ -1,0 +1,50 @@
+.widgetStyle {
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+    *zoom: 1;
+    padding: 30px 20px;
+}
+
+.widgetTitleStyle {
+    padding: 0px 12px;
+}
+
+.main_widget {
+    box-shadow: 1px 1px 3px 0px #eeeeee;
+}
+
+@media (max-width: 767px) {
+    .main_widget {
+        box-shadow: 1px 1px 3px 0px #eeeeee;
+        margin: 0px auto 20px !important;
+        float: unset !important;
+        background-color: white;
+    }
+}
+
+
+.widgetStyle h2 {
+    margin: 0 0 10px;
+    padding: 0 0 5px;
+    font-size: 2em;
+    color: #888;
+}
+.widgetStyle a.widgetMoreLink {
+    position: absolute;
+    top: 19px;
+    right: 18px;
+    font-size: 2em;
+    text-decoration: none;
+    color: #888;
+    border: 1px solid #eeeeee;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.widgetStyle.black h2 {
+    color: #333;
+}
+.widgetStyle.black h2 {
+    color: #999;
+}

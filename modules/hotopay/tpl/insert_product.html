@@ -1,0 +1,158 @@
+<include target="__header.html" />
+
+{@
+    if(!isset($product)):
+        $product = new stdClass();
+    endif;
+
+    if(!isset($product->product_option)):
+        $item = new stdClass();
+        $item->item_srl = 0;
+        $item->title = '기본 옵션';
+        $item->description = '기본 옵션입니다.';
+        $item->price = 0;
+        $product->product_option = array($item);
+    endif;
+}
+
+<form class="x_form-horizontal" action="./" method="post" id="hotopay" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="hotopay" />
+	<input type="hidden" name="act" value="procHotopayAdminInsertProduct" />
+	<input type="hidden" name="success_return_url" value="{getUrl('','mid','admin','act','dispHotopayAdminProductList')}" />
+	<input type="hidden" name="xe_validator_id" value="modules/hotopay/tpl/config/1" />
+	<input type="hidden" name="product_pic_org_src" value="{$product->product_pic_src}" />
+	<input type="hidden" name="product_pic_org_srl" value="{$product->product_pic_srl}" />
+	
+    <h1>상품 등록</h1>
+
+	<div class="message {$XE_VALIDATOR_MESSAGE_TYPE}" cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/hotopay/tpl/config/1'">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+
+    <div class="x_control-group">
+        <label class="x_control-label" for="product_name">상품 이름</label>
+        <div class="x_controls">
+            <input type="text" name="product_name" id="product_name" value="{$product->product_name}" required><br>
+            상품 이름입니다.
+        </div>
+    </div>
+
+    <div class="x_control-group">
+        <label class="x_control-label" for="product_des">상품 설명</label>
+        <div class="x_controls">
+            <input type="text" name="product_des" id="product_des" value="{$product->product_des}"><br>
+            상품 설명입니다.
+        </div>
+    </div>
+    
+    <div class="x_control-group">
+        <label class="x_control-label" for="product_pic">상품 사진</label>
+        <div class="x_controls">
+            <input type="file" id="product_pic" name="product_pic" accept="image/*"><br>
+            상품 사진을 올려주세요.
+        </div>
+    </div>
+
+    <div class="x_control-group">
+        <label class="x_control-label" for="product_sale_price">상품 판매 가격</label>
+        <div class="x_controls">
+            <input type="number" name="product_sale_price" id="product_sale_price" value="{$product->product_sale_price}" required><br>
+            상품 판매 가격입니다.
+        </div>
+    </div>
+
+    <div class="x_control-group">
+        <label class="x_control-label" for="product_original_price">상품 본래 가격</label>
+        <div class="x_controls">
+            <input type="number" name="product_original_price" id="product_original_price" value="{$product->product_original_price}" required><br>
+            부가세와 할인률을 제외한 상품 본래 가격입니다. (실제 판매가에는 노출되지 않습니다.)
+        </div>
+    </div>
+	
+	<div class="x_control-group">
+        <label class="x_control-label">상품 판매 옵션</label>
+        <div class="x_controls">
+            <table class="x_table x_table-striped x_table-hover" id="product_option" style="max-width: 800px;">
+                <thead>
+                <tr>
+                    <th scope="col">옵션 이름</th>
+                    <th scope="col">옵션 설명</th>
+                    <th scope="col">판매 가격</th>
+                    <th scope="col">판매 재고</th>
+                    <th scope="col">관리</th>
+                </tr>
+                </thead>
+                <tbody>
+                {@
+                    $i = 0;
+                }
+                <!--@foreach($product->product_option as $item)-->
+                <tr>
+                    <input type="hidden" name="sale_option[{$i}][option_srl]" value="{$item->option_srl}" />
+                    <td><input type="text" name="sale_option[{$i}][title]" placeholder="옵션 이름" value="{$item->title}" required></td>
+                    <td><textarea name="sale_option[{$i}][description]" placeholder="옵션 설명" required>{$item->description}</textarea></td>
+                    <td><input type="number" name="sale_option[{$i}][price]" placeholder="판매 가격" value="{$item->price}" required></td>
+                    <td><input type="number" name="sale_option[{$i}][stock]" placeholder="재고 수량" value="{$item->stock}" required><br>
+                    <label><input type="checkbox" name="sale_option[{$i}][infinity_stock]" value="Y" onclick="trigger_stock(this)">&nbsp;무제한</label></td>
+                    <td><a href="javascript:void(0)" onclick="remove_option(this)">제거</a></td>
+                </tr>
+                {@ $i++; }
+                <!--@endforeach-->
+                </tbody>
+            </table>
+            <a href="javascript:void(0)" onclick="add_option()">+ 옵션 추가하기</a><br>
+            <script>
+                var option_count = {$i};
+                function add_option() {
+                    option_count++;
+                    
+                    var html = '<tr>';
+                    html += '<input type="hidden" name="sale_option['+option_count+'][option_srl]" value="0" />';
+                    html += '<td><input type="text" name="sale_option['+option_count+'][title]" placeholder="옵션 이름" required></td>';
+                    html += '<td><textarea name="sale_option['+option_count+'][description]" placeholder="옵션 설명" required></textarea></td>';
+                    html += '<td><input type="number" name="sale_option['+option_count+'][price]" placeholder="판매 가격" required></td>';
+                    html += '<td><input type="number" name="sale_option['+option_count+'][stock]" placeholder="재고 수량" required><br>';
+                    html += '<label><input type="checkbox" name="sale_option['+option_count+'][infinity_stock]" value="Y" onclick="trigger_stock(this)">&nbsp;무제한</label></td>';
+                    html += '<td><a href="javascript:void(0)" onclick="remove_option(this)">제거</a></td>';
+                    html += '</tr>';
+
+                    $('#product_option tbody').append(html);
+                }
+    
+                // remove option if not last one
+                function remove_option(e) {
+                    if ($('#product_option tbody tr').length > 1) {
+                        if(!confirm('해당 옵션을 삭제하시겠습니까?')) return;
+
+                        $(e).parent().parent().remove();
+                    } else {
+                        alert('최소 한개의 옵션은 있어야 합니다.');
+                    }
+                }
+
+                // read only stock when infinity stock is checked
+                function trigger_stock(e) {
+                    if ($(e).is(':checked')) {
+                        $(e).parent().parent().parent().find('input[name*=stock]').attr('readonly', true);
+                    } else {
+                        $(e).parent().parent().parent().find('input[name*=stock]').attr('readonly', false);
+                    }
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="x_control-group">
+        <label class="x_control-label" for="product_buyer_group">구매시 부여할 그룹</label>
+        <div class="x_controls">
+            <label><input type="radio" name="product_buyer_group" value="0" checked="checked">&nbsp;부여 안함</label>
+            <!--@foreach($groups as $group)-->
+            <label><input type="radio" name="product_buyer_group" value="{$group->group_srl}">&nbsp;{$group->title}</label>
+            <!--@endforeach-->
+        </div>
+    </div>
+	
+	<div class="btnArea x_clearfix">
+		<button type="submit" class="x_btn x_btn-primary x_pull-right">{$lang->cmd_registration}</button>
+	</div>
+</form>

@@ -1,0 +1,143 @@
+<include target="_header.html" />
+<load target="css/list.css" />
+
+<form class="x_form-horizontal" action="./" method="post" id="hotopay" onsubmit="return _purchaseSubmit();">
+	<input type="hidden" name="module" value="hotopay" />
+	<input type="hidden" name="act" value="procHotopayOrderProcess" />
+	<input type="hidden" name="xe_validator_id" value="modules/hotopay/tpl/config/1" />
+
+    
+    <section class="flex-container">
+    <div id="p_content">
+    <div id="r_content">
+        <h1>주문서</h1>
+        <hr>
+        <br>
+        <ul>
+            <!--@foreach($product_list as $no => $product)-->
+            <input type="hidden" name="purchase_info[{$no}][product_srl]" value="{$product->product_srl}" />
+            <li>
+                <div class="thumb">
+                    <img src="{$product->product_pic_src}" />
+                </div>
+                <div class="gdsInfo">
+                    <p>
+                        <span>상품명</span>{$product->product_name}<br>
+                        <span>상품 설명</span>{$product->product_des}<br>
+                        <span>판매 가격</span>{number_format($product->product_sale_price)} ₩<br><br>
+                        <span>옵션</span>
+                        <select name="purchase_info[{$no}][option_srl]" hotopay-product-srl="{$product->product_srl}" hotopay-type="option" onchange="optionChange()">
+                            <!--@foreach($product->product_option as $option)-->
+                            {@
+                                $sub_price = $option->price - $product->product_sale_price;
+                                if($sub_price > 0) $sub_price = "(+".number_format($sub_price)."원)";
+                                else if($sub_price < 0) $sub_price = "(".number_format($sub_price)."원)";
+                                else $sub_price = "";
+
+                                $stock_text = "";
+                                if($option->infinity_stock != 'Y'):
+                                    if($option->stock < 1) $stock_text = " (품절)";
+                                    else $stock_text = " (".$option->stock."개)";
+                                endif;
+                            }
+                            <option value="{$option->option_srl}" hotopay-option-price="{$option->price}" disabled|cond="$option->infinity_stock != 'Y' && $option->stock < 1">{$option->title} {$sub_price}{$stock_text}</option>
+                            <!--@endforeach-->
+                        </select>
+                        <br>
+                    </p>
+                </div>
+            </li>
+            <!--@endforeach-->
+        </ul>
+
+        <br><br>
+
+        <section id="pay_method">
+            <!--@if($toss_enabled)-->
+                <!--@if(in_array(1, $hotopay_config->toss_payments_list))--><input type="radio" name="pay_method" id="pm_card" value="card" checked="checked" required="required"><label for="pm_card"> 카드</label>&nbsp;<!--@endif-->
+                <!--@if(in_array(6, $hotopay_config->toss_payments_list))--><input type="radio" name="pay_method" id="pm_acct" value="ts_account" required="required"><label for="pm_acct"> 계좌이체</label>&nbsp;<!--@endif-->
+                <!--@if(in_array(2, $hotopay_config->toss_payments_list))--><input type="radio" name="pay_method" id="pm_vacc" value="v_account" required="required"><label for="pm_vacc"> 가상계좌</label>&nbsp;<!--@endif-->
+                <!--@if(in_array(3, $hotopay_config->toss_payments_list))--><input type="radio" name="pay_method" id="pm_vouc" value="voucher" required="required"><label for="pm_vouc"> 상품권</label>&nbsp;<!--@endif-->
+                <!--@if(in_array(4, $hotopay_config->toss_payments_list))--><input type="radio" name="pay_method" id="pm_cphn" value="cellphone" required="required"><label for="pm_cphn"> 휴대폰</label>&nbsp;<!--@endif-->
+            <!--@endif-->
+            <!--@if($n_account_enabled)-->
+            <input type="radio" name="pay_method" id="pm_nacc" value="n_account" required="required"><label for="pm_nacc"> 무통장 입금</label>&nbsp;
+            <!--@endif-->
+            <!--@if($toss_enabled)-->
+                <!--@if(in_array(5, $hotopay_config->toss_payments_list))--><input type="radio" name="pay_method" id="pm_toss" value="toss" required="required"><label for="pm_toss"> <img src="/modules/hotopay/skins/default/img/toss_payment_icon.png" style="width: 53px; display: inline;" alt="토스" title="토스" /></label>&nbsp;<!--@endif-->
+            <!--@endif-->
+            <!--@if($kakaopay_enabled)-->
+            <input type="radio" name="pay_method" id="pm_kapy" value="kakaopay" required="required"><label for="pm_kapy"> <img src="/modules/hotopay/skins/default/img/kakao_payment_icon_yellow_small.png" style="width: 53px; display: inline;" alt="카카오페이" title="카카오페이" /></label>
+            <!--@endif-->
+            <!--@if($paypal_enabled)-->
+            <input type="radio" name="pay_method" id="pm_payp" value="paypal" required="required"><label for="pm_payp"> <img src="/modules/hotopay/skins/default/img/paypal_PP_logo_h_100x26.png" style="width: 53px; display: inline-block;" alt="PayPal" title="PayPal" /></label>
+            <!--@endif-->
+        </section>
+
+        <section id="depositor" style="display: none">
+            <p>입금자 이름 <span id="required">*</span></p>
+            <input type="text" id="depositor_name" name="depositor_name" maxlength="5" placeholder="입금자 명을 입력해주세요.">
+        </section>
+
+        <section id="result">
+            <p>총 결제 금액: <span id="purchase_price">0</span> 원</p>
+        </section>
+
+		<section id="purchase_check">
+			<label><input type="checkbox" id="purchase_checkbox" name="purchase_checkbox" required>&nbsp;위 결제 사항과 <a href="{$hotopay_config->purchase_term_url}" style="text-decoration: underline; color: #ff4757;" target="_blank">전자금융거래 이용약관</a>을 확인하고 결제를 진행합니다.</label>
+		</section>
+        
+        <div id="btn_layer">
+            <input type="submit" id="ok_btn" value="구매하기">
+        </div>
+    </div>
+    </div>
+    </section>
+</form>
+
+<script>
+$(document).ready(function() {
+    optionChange();
+});
+
+function optionChange()
+{
+    var t_price = 0;
+    
+    $('#r_content select[hotopay-type=option]').each(function (index, item) {
+        var price = $('option:selected', item).attr('hotopay-option-price');
+        t_price += parseInt(price);
+    });
+
+    $('#purchase_price').html(t_price.toLocaleString('ko-KR'));
+}
+
+function _purchaseSubmit()
+{
+	var purchase_checkbox = $('#purchase_checkbox');
+	if(!purchase_checkbox.is(":checked"))
+	{
+		alert('결제 사항 확인을 체크해주세요!');
+		return false;
+	}
+	
+	return true;
+}
+
+$('#pm_payp').click(function(){
+    alert('Paypal 결제는 한국 거주자는 이용할 수 없습니다.\n\n해외 거주자를 위한 기능입니다.');
+});
+
+$('input[name=pay_method]').click(function(){
+    if($(this).attr('id') == 'pm_nacc')
+    {
+        $('#depositor').show();
+        $('#depositor_name').attr('required', 'required');
+    }
+    else
+    {
+        $('#depositor').hide();
+        $('#depositor_name').removeAttr('required');
+    }
+});
+</script>

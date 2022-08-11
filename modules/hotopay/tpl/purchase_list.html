@@ -1,0 +1,227 @@
+<include target="__header.html" />
+
+<div class="message {$XE_VALIDATOR_MESSAGE_TYPE}" cond="$XE_VALIDATOR_MESSAGE">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+{@
+	if($oMemberModel === null) $oMemberModel = getModel('member');
+	$oHotopayModel = getModel('hotopay');
+}
+
+<style>
+	label, input, select { display:block; margin: 5px;}
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    select { margin-bottom:12px; width:97%; padding: .4em; }
+	input:read-only {background-color: #eee;}
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+	.ui-dialog-title {font-size: 1.2em;}
+</style>
+
+<section class="section">
+	<p class="x_well x_well-small" cond="!$purchase_list">결제 기록이 없습니다</p>
+	<div class="dl_module_block"></div>
+
+	<table class="x_table x_table-striped x_table-hover" style="margin-top:20px;">
+		<thead>
+			{@
+				$sort_index = Context::get('sort_index');
+				$sort_order = Context::get('sort_order');
+			}
+		<tr>
+            <th scope="col"><a href="{getUrl('sort_index','purchase_srl','sort_order',($sort_order == 'asc') ? 'desc' : 'asc')}">주문 번호<!--@if($sort_index == 'purchase_srl')-->&nbsp;<!--@if($sort_order == 'asc')-->▲<!--@else-->▼<!--@endif--><!--@endif--></a></th>
+            <th scope="col">구매자</th>
+            <th scope="col">구매 상품</th>
+            <th scope="col"><a href="{getUrl('sort_index','product_purchase_price','sort_order',($sort_order == 'asc') ? 'desc' : 'asc')}">가격<!--@if($sort_index == 'product_purchase_price')-->&nbsp;<!--@if($sort_order == 'asc')-->▲<!--@else-->▼<!--@endif--><!--@endif--></a></th>
+            <th scope="col"><a href="{getUrl('sort_index','pay_method','sort_order',($sort_order == 'asc') ? 'desc' : 'asc')}">결제 수단<!--@if($sort_index == 'pay_method')-->&nbsp;<!--@if($sort_order == 'asc')-->▲<!--@else-->▼<!--@endif--><!--@endif--></a></th>
+            <th scope="col"><a href="{getUrl('sort_index','pay_status','sort_order',($sort_order == 'asc') ? 'desc' : 'asc')}">결제 상태<!--@if($sort_index == 'pay_status')-->&nbsp;<!--@if($sort_order == 'asc')-->▲<!--@else-->▼<!--@endif--><!--@endif--></a></th>
+            <th scope="col">상태 변경</th>
+            <th scope="col"><a href="{getUrl('sort_index','regdate','sort_order',($sort_order == 'asc') ? 'desc' : 'asc')}">결제일<!--@if($sort_index == 'regdate')-->&nbsp;<!--@if($sort_order == 'asc')-->▲<!--@else-->▼<!--@endif--><!--@endif--></a></th>
+            <th scope="col">속성</th>
+		</tr>
+		</thead>
+		<tbody>
+		<!--@foreach($purchase_list as $no => $val)-->
+        {@
+            $member_data = $oMemberModel->getMemberInfoByMemberSrl($val->member_srl);
+            $product_data = json_decode($val->products);
+			$purchase_done_url = getUrl("","module","hotopay","act","procHotopayAdminPurchaseStatusChange","purchase_srl",$val->purchase_srl,"status","DONE");
+        }
+		<tr>
+			<td>HT{$val->purchase_srl}</td>
+			<td><a href="#popup_menu_area" class="member_{$val->member_srl}">{$member_data->nick_name}</a> ({$val->member_srl})</td>
+            <td>{$product_data->t}</td>
+            <td>₩{number_format($val->product_purchase_price)}</td>
+            <td>{$oHotopayModel->purchaseMethodToString($val->pay_method)}</td>
+            <td><span class="paystatus {$val->pay_status}">{$oHotopayModel->payStatusCodeToString($val->pay_status)}</span></td>
+			<td>
+				<!--@if(strcmp($val->pay_status, "PENDING") === 0 || strcmp($val->pay_status, "WAITING_FOR_DEPOSIT") === 0)-->&nbsp;<a href="#" onclick="var _u='{$purchase_done_url}';var _a=function(){if(confirm('정상 결제 처리를 하시겠습니까?')){window.location=_u}};_a();">결제 확정하기</a><!--@endif-->
+				<!--@if(strcmp($val->pay_status, "DONE") === 0 || strcmp($val->pay_status, "APPROVED") === 0)-->&nbsp;<a href="#" onclick="opendialog('HT{$val->purchase_srl}',{$val->product_purchase_price},'{$val->pay_method}');" style="color: #ff4757;">환불하기</a><!--@endif-->
+			</td>
+            <td>{date("Y-m-d H:i:s",$val->regdate)}</td>
+            <td><a href="{getUrl('','module','admin','act','dispHotopayAdminPurchaseData','purchase_srl',$val->purchase_srl)}">데이터</a></td>
+		</tr>
+		<!--@end-->
+		</tbody>
+	</table>
+
+	<form action="" class="x_pagination">
+		<input type="hidden" name="error_return_url" value="" />
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="act" value="{$act}" />
+		<input cond="$search_keyword" type="hidden" name="search_keyword" value="{$search_keyword}" />
+		<input cond="$search_target" type="hidden" name="search_target" value="{$search_target}" />
+
+		<ul>
+			<li class="x_disabled"|cond="!$page || $page == 1"><a href="{getUrl('page', '')}">&laquo; {$lang->first_page}</a></li>
+			<block cond="$page_navigation->first_page != 1 && $page_navigation->first_page + $page_navigation->page_count > $page_navigation->last_page - 1 && $page_navigation->page_count != $page_navigation->total_page">
+				{@$isGoTo = true}
+				<li>
+					<a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+					<span cond="$isGoTo" id="goTo" class="x_input-append">
+				<input type="number" min="1" max="{$page_navigation->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+				<button type="submit" class="x_add-on">Go</button>
+			</span>
+				</li>
+			</block>
+
+			<!--@while($page_no = $page_navigation->getNextPage())-->
+			{@$last_page = $page_no}
+			<li class="x_active"|cond="$page_no == $page"><a  href="{getUrl('page', $page_no)}">{$page_no}</a></li>
+			<!--@end-->
+
+			<block cond="$last_page != $page_navigation->last_page && $last_page + 1 != $page_navigation->last_page">
+				{@$isGoTo = true}
+				<li>
+					<a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+					<span cond="$isGoTo" id="goTo" class="x_input-append">
+				<input type="number" min="1" max="{$page_navigation->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+				<button type="submit" class="x_add-on">Go</button>
+			</span>
+				</li>
+			</block>
+			<li class="x_disabled"|cond="$page == $page_navigation->last_page"><a href="{getUrl('page', $page_navigation->last_page)}" title="{$page_navigation->last_page}">{$lang->last_page} &raquo;</a></li>
+		</ul>
+	</form>
+
+	<form action="" class="search">
+		<input type="hidden" name="error_return_url" value="" />
+		<input type="hidden" name="module" value="{$module}" />
+		<input type="hidden" name="act" value="{$act}" />
+
+		<select name="search_target">
+			<option value="nick_name" selected|cond="$search_target == 'nick_name'">구매자 닉네임</option>
+			<option value="user_name" selected|cond="$search_target == 'user_name'">구매자 실명</option>
+			<option value="user_id" selected|cond="$search_target == 'user_id'">구매자 아이디</option>
+			<option value="phone_number" selected|cond="$search_target == 'phone_number'">구매자 전화번호</option>
+			<option value="email_address" selected|cond="$search_target == 'email_address'">구매자 이메일</option>
+			<option value="purchase_srl" selected|cond="$search_target == 'purchase_srl'">주문번호</option>
+			<option value="member_srl" selected|cond="$search_target == 'member_srl'">회원번호</option>
+		</select>
+		<input type="text" name="search_keyword" value="{$search_keyword}" />
+		<input type="submit" class="x_btn x_btn-inverse" style="margin-top: -10px" value="검색">
+	</form>
+
+	<span class="x_pull-right x_btn-group">
+		<a class="x_btn x_btn-inverse" href="{getUrl('','mid','admin','act','dispHotopayAdminInsertPurchase')}">결제 데이터 등록</a>
+	</span>
+</section>
+
+<div id="dialog" title="주문 취소" style="display: none;">
+	<p class="validateTips">주문 취소를 위해 아래 폼을 입력해주세요.</p>
+
+	<form action="./" method="POST" onsubmit="return confirm('해당 주문을 환불하시겠습니까?');">
+	  <input type="hidden" name="mid" value="admin">
+	  <input type="hidden" name="act" value="procHotopayAdminPurchaseStatusChange">
+	  <input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}">
+	  <input type="hidden" name="status" value="CANCEL">
+	  <fieldset>
+		<label for="purchase_id">주문번호</label>
+		<input type="text" name="purchase_id" id="purchase_id" value="" class="text ui-widget-content ui-corner-all" readonly="readonly" required>
+		<label for="cancel_reason">취소 이유</label>
+		<input type="text" name="cancel_reason" id="cancel_reason" value="고객이 취소 원함" class="text ui-widget-content ui-corner-all" required>
+		<label for="cancel_amount">취소 금액</label>
+		<input type="number" name="cancel_amount" id="cancel_amount" value="0" class="text ui-widget-content ui-corner-all" min="-1" max="0" required>
+
+		<div class="bank_input">
+		<hr>
+		<p class="validateTips">환불계좌를 입력해주세요</p>
+		<label for="bank">환불 은행</label>
+		<select name="bank" id="bank">
+			<option value="">-- 은행을 선택해주세요 --</option>
+			<option value="농협">NH농협은행</option>
+			<option value="국민">KB국민은행</option>
+			<option value="우리">우리은행</option>
+			<option value="신한">신한은행</option>
+			<option value="기업">IBK기업은행</option>
+			<option value="하나">하나은행</option>
+			<option value="경남">경남은행</option>
+			<option value="대구">대구은행</option>
+			<option value="부산">부산은행</option>
+			<option value="산림">산림조합</option>
+			<option value="수협">Sh수협은행</option>
+			<option value="우체국">우체국예금보험</option>
+			<option value="저축">저축은행</option>
+			<option value="산업">KDB산업은행</option>
+			<option value="SC제일">SC제일은행</option>
+			<option value="씨티">씨티은행</option>
+			<option value="대구">DGB대구은행</option>
+			<option value="광주">광주은행</option>
+			<option value="제주">제주은행</option>
+			<option value="전북">전북은행</option>
+			<option value="새마을">새마을금고</option>
+			<option value="신협">신협</option>
+			<option value="케이">케이뱅크</option>
+			<option value="카카오">카카오뱅크</option>
+			<option value="토스">토스뱅크</option>
+		</select>
+		<label for="accountNumber">환불 계좌번호</label>
+		<input type="text" name="accountNumber" id="accountNumber" placeholder=" - 기호 없이 입력해주세요" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text ui-widget-content ui-corner-all">
+		<label for="holderName">계좌 예금주명</label>
+		<input type="text" name="holderName" id="holderName" placeholder="홍길동" class="text ui-widget-content ui-corner-all">
+		</div>
+   
+		<!-- Allow form submission with keyboard without duplicating the dialog button -->
+		<input type="submit" tabindex="-1" style="width: 100%; padding: 5px; margin-top: 15px; margin-bottom: 10px;" value="환불 처리">
+	  </fieldset>
+	</form>
+</div>
+
+<load target="css/jquery-ui.theme.min.css" />
+<load target="js/jquery-ui.min.js" />
+<script>
+	function opendialog(purchase_id, amount, payment_type)
+	{
+		$('#dialog').dialog(dialog_variable);
+		$('#dialog input[name="purchase_id"]').val(purchase_id);
+		$('#dialog input[name="cancel_amount"]').attr("max" , amount);
+		$('#dialog input[name="cancel_amount"]').val(amount);
+		$('#dialog select[name="bank"]').val('');
+		$('#dialog input[name="accountNumber"]').val('');
+		$('#dialog input[name="holderName"]').val('');
+		if(payment_type == 'v_account')
+		{
+			$('.bank_input').css("display","");
+			$("[name=bank]").attr("required" , true);
+			$("[name=accountNumber]").attr("required" , true);
+			$("[name=holderName]").attr("required" , true);
+		}else{
+			$('.bank_input').css("display","none");
+			$("[name=bank]").attr("required" , false);
+			$("[name=accountNumber]").attr("required" , false);
+			$("[name=holderName]").attr("required" , false);
+		}
+	}
+	var dialog_variable = {
+	  resizable: false,
+      height: "auto",
+	  width: '500px',
+      modal: true,
+	};
+</script>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">XNS SNS 공유버튼 삽입 애드온</title>
+    <description xml:lang="ko">
+      게시글 본문 하단에 SNS 공유버튼을 삽입하는 애드온입니다.
+    </description>
+    <version>0.1</version>
+    <date>2020-12</date>
+    <author email_address="xnssolution@gmail.com" link="https://xenara.zaggu.net">
+        <name xml:lang="ko">XNS</name>
+    </author>
+
+  	<extra_vars>
+      <group>
+        <title xml:lang="ko">애드온 기본설정</title>
+        <var name="kakao_javascript_key" type="text">
+          <title xml:lang="ko">카카오 JavaScript 키(필수)</title>
+    			<description xml:lang="ko">
+    			  카카오 JavaScript 키를 입력하세요. 카카오톡 공유를 위해서는 필수입니다.
+    			  카카오 JavaScript 키는 'https://developers.kakao.com/'에서 발급받을 수 있습니다.
+    			  자세한 사항은 'https://developers.kakao.com/'를 참조하세요.
+    			</description>
+        </var>
+      </group>
+
+      <group>
+        <title xml:lang="ko">SNS 공유버튼 설정</title>
+
+        <var name="output_kakaotalk" type="select">
+            <title xml:lang="ko">카카오톡 출력유무</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력안함</title>
+            </options>
+        </var>
+        <var name="output_band" type="select">
+            <title xml:lang="ko">밴드 출력유무</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력안함</title>
+            </options>
+        </var>
+        <var name="output_naver" type="select">
+            <title xml:lang="ko">네이버 출력유무</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력안함</title>
+            </options>
+        </var>
+        <var name="output_facebook" type="select">
+            <title xml:lang="ko">페이스북 출력유무</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력안함</title>
+            </options>
+        </var>
+        <var name="output_twitter" type="select">
+            <title xml:lang="ko">트위터 출력유무</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력안함</title>
+            </options>
+        </var>
+        <var name="output_linkcopy" type="select">
+            <title xml:lang="ko">링크복사 출력유무</title>
+            <options value="Y">
+                <title xml:lang="ko">출력</title>
+            </options>
+            <options value="N">
+                <title xml:lang="ko">출력안함</title>
+            </options>
+        </var>
+      </group>
+  	</extra_vars>
+</addon>

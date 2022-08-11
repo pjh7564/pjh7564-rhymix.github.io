@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+	<title xml:lang="ko">미디어 임베드 애드온</title>
+	<description xml:lang="ko">CKEditor에 미디어 사이트의 링크를 '붙여넣기'하면 임베드 코드로 '바로 변환' 시켜주는 애드온</description>
+	<license>GPLv2</license>
+	<version>0.6.3</version>
+	<date>2022-06-05</date>
+	<author email_address="cydemo@gmail.com" link="https://xetown.com">
+		<name xml:lang="ko">cydemo</name>
+	</author>
+	<extra_vars>
+		<group>
+			<title xml:lang="ko">1. 링크 텍스트</title>
+			<var name="leave_link" type="select">
+				<title xml:lang="ko">링크 텍스트 처리</title>
+				<description xml:lang="ko">미디어 임베드 후 링크 텍스트를 어떻게 처리할 지 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">삭제(미디어 임베드만 함)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">링크 텍스트도 표시</title>
+				</options>
+			</var>
+			<var name="link_style" type="textarea">
+				<title xml:lang="ko">링크 텍스트 꾸밈</title>
+				<description xml:lang="ko">링크 텍스트를 표시할 때 스타일을 줄 수 있습니다. 기본값은 <![CDATA[<span style="color:blue;">&lt;p&gt;%text%&lt;/p&gt;</span>]]>입니다. <![CDATA[<span style="color:blue;">%text%</span>]]> 앞 뒤로 태그를 붙여 스타일을 꾸며보세요.</description>
+			</var>
+		</group>
+		<group>
+			<title xml:lang="ko">2. 사용자 설정</title>
+			<var name="script" type="textarea">
+				<title xml:lang="ko">사용자 JS 설정</title>
+				<description xml:lang="ko">스크립트 구문을 추가할 수 있습니다. script 태그 안에 들어갈 구문만 입력해주세요.</description>
+			</var>
+		</group>
+	</extra_vars>
+</addon>

@@ -1,0 +1,2 @@
+<?php /* 2.0.21:site_and_module#39:module_config:integration_search */
+return unserialize('a:2:{i:0;i:1659143742;i:1;O:8:"stdClass":4:{s:4:"skin";s:10:"misol_town";s:5:"mskin";s:16:"/USE_RESPONSIVE/";s:6:"target";s:7:"exclude";s:17:"target_module_srl";s:0:"";}}');

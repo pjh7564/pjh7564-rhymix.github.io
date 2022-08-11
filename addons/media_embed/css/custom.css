@@ -1,0 +1,11 @@
+.media_embed_wrapper {
+	margin: 0 auto; text-align: center;
+}
+.media_embed_wrapper {
+	max-width: 640px;
+}
+
+.media_embed.podbbang-embed {
+	height: 0;
+	padding-bottom: 202px !important;
+}

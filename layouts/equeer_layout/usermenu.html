@@ -1,0 +1,26 @@
+
+  <div class="popover popover-usermenu popover-animationRight">
+
+      <ul class="popover-usermenu-userinfo a-hover-primary">
+        <li><a href="{getUrl('act', 'dispMemberInfo','member_srl','')}">{$logged_info->nick_name}</a></li>
+        <li><a href="{getUrl('act', 'dispMemberInfo','member_srl','')}">{$logged_info->email_address}</a></li>
+      </ul>
+
+      <!--@if($layout_info->user_point === 'Y')-->
+      <div class="popover-usermenu-userinfo a-hover-primary popover-userpoint">
+        <img class="zbxe_widget_output" widget="point_status" skin="default" colorset="layout" />
+      </div>
+      <!--@end-->
+
+      <ul class="popover-list a-hover-primary">
+        <li cond="$grant->manager"><a href="{getUrl('','module','admin','act','dispLayoutAdminModify','layout_srl',$layout_info->layout_srl)}" onclick="window.open(this.href);return false;"><i class="fa fa-pencil"></i>레이아웃 수정</a></li>
+        <li cond="$logged_info->is_admin == 'Y'"><a href="{getUrl('', 'module', 'admin')}" target="_blank" title="{$lang->cmd_management}"><i class="fa fa-lock" aria-hidden="true"></i>{$lang->cmd_management}</a></li>
+        <li><a href="{getUrl('act', 'dispMemberInfo','member_srl','')}"><i class="fa fa-user" aria-hidden="true"></i>마이페이지</a></li>
+        <li><a href="{getUrl('act', 'dispMemberScrappedDocument', 'page','')}"><i class="fa fa-bookmark" aria-hidden="true"></i>스크랩</a></li>
+        <li><a href="{getUrl('act', 'dispMemberOwnDocument', 'page','')}"><i class="fa fa-file-text" aria-hidden="true"></i>작성글</a></li>
+        <li><a href="{getUrl('act', 'dispMemberOwnComment', 'page','')}"><i class="fa fa-comment" aria-hidden="true"></i>작성댓글</a></li>
+        <li><a href="{getUrl('act', 'dispMemberLogout')}"><i class="fa fa-sign-out" aria-hidden="true"></i>{$lang->cmd_logout}</a></li>
+      </ul>
+      <a class="btn_secondary_round" href="{getUrl('act', 'dispMemberModifyInfo')}"><i class="fa fa-cog" aria-hidden="true"></i></a>
+
+  </div>

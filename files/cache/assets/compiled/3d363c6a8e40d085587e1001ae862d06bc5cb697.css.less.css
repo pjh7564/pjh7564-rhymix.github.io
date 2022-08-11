@@ -1,0 +1,5 @@
+/*
+  Error while compiling widgets/content/skins/simple_rectangle/css/css.less
+
+  variable @red is undefined: failed at `.text-contrast(#fff; darken(@color,5%); lighten(@color,5%));` line: 84
+*/

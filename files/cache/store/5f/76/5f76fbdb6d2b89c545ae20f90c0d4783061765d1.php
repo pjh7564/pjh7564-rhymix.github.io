@@ -1,0 +1,2 @@
+<?php /* 2.0.21:site_and_module#20:module_grants:50 */
+return unserialize('a:2:{i:0;i:1659071363;i:1;O:39:"Rhymix\\Framework\\Helpers\\DBResultHelper":6:{s:15:"page_navigation";N;s:4:"data";a:0:{}s:5:"error";i:0;s:7:"message";s:7:"success";s:9:"variables";a:2:{s:6:"_query";s:99:"SELECT * FROM `rx_module_grants` AS `module_grants` WHERE `module_srl` = ? ORDER BY `group_srl` ASC";s:13:"_elapsed_time";s:7:"0.00227";}s:14:"httpStatusCode";i:200;}}');

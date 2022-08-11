@@ -1,0 +1,22 @@
+@mixin mobile {
+  @media (max-width: $mobile-w) {
+    @content;
+  }
+}
+
+.app-article-content {
+  p > img {
+    @include mobile {
+      position: relative;
+      display: block;
+      width: calc(100% + (1.25rem * 2));
+      max-width: calc(100% + (1.25rem * 2));
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+    }
+  }
+}
+
+.app-article-content {
+  padding-bottom: 3rem;
+}

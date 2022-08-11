@@ -1,0 +1,85 @@
+
+<!-- Sub Menu -->
+
+<!--@if($layout_info->sub_content_top_on === 'Y')-->
+<div class="subnav_widget">
+  <!--@if($layout_info->sub_content_top)-->
+  {$layout_info->sub_content_top}
+  <!--@end-->
+</div>
+<!--@else-->
+<!--@end-->
+
+<!--@if($layout_info->sub_banner_on === 'N')-->
+<!--@else-->
+<div class="subnav_banner">
+  <a href="<!--@if($layout_info->sub_banner_url)-->{$layout_info->sub_banner_url}<!--@else-->http://calvinsnax.xyz<!--@end-->" target="_blank"|cond="$layout_info->sub_banner_ow === 'Y'">
+    <!--@if($layout_info->sub_banner_img)-->
+    <img src="{$layout_info->sub_banner_img}" alt="{$layout_info->sub_banner_img}">
+    <!--@else-->
+    <img src="./img/subnav_banner_img.png" alt="./img/subnav_banner_img.png">
+    <!--@end-->
+  </a>
+</div>
+<!--@end-->
+
+<!--@if($layout_info->sub_widget1_on === 'N')-->
+<!--@else-->
+<div class="subnav_widget a-hover-primary">
+  <div class="subnav-widget-title">
+    <span class="float-left">
+    <!--@if($layout_info->sub_widget1_title)-->
+    {$layout_info->sub_widget1_title}
+    <!--@else-->
+    최근 게시물
+    <!--@end-->
+    </span>
+    <!--@if($layout_info->sub_widget1_url)-->
+    <a class="float-right" href="{$layout_info->sub_widget1_url}">
+      <span>MORE</span>
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+    <!--@end-->
+  </div>
+  <!--@if($layout_info->sub_widget1_content)-->
+  {$layout_info->sub_widget1_content}
+  <!--@else-->
+  <img class="zbxe_widget_output" widget="content" skin="default" colorset="white" widget_cache="0m" content_type="document" list_type="image_title_content" tab_type="none" markup_type="table" page_count="1" subject_cut_size="30" content_cut_size="30" option_view="thumbnail,title,content,nickname" show_browser_title="N" show_comment_count="Y" show_trackback_count="N" show_category="Y" show_icon="N" show_secret="N" order_target="regdate" order_type="desc" thumbnail_type="crop" />
+  <!--@end-->
+</div>
+<!--@end-->
+
+<!--@if($layout_info->sub_widget2_on === 'N')-->
+<!--@else-->
+<div class="subnav_widget a-hover-primary">
+  <div class="subnav-widget-title">
+    <span class="float-left">
+    <!--@if($layout_info->sub_widget2_title)-->
+    {$layout_info->sub_widget2_title}
+    <!--@else-->
+    최근 댓글
+    <!--@end-->
+    </span>
+    <!--@if($layout_info->sub_widget2_url)-->
+    <a class="float-right" href="{$layout_info->sub_widget2_url}">
+      <span>MORE</span>
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+    <!--@end-->
+  </div>
+  <!--@if($layout_info->sub_widget2_content)-->
+  {$layout_info->sub_widget2_content}
+  <!--@else-->
+   <img class="zbxe_widget_output" widget="content" skin="default" colorset="white" widget_cache="0m" content_type="comment" list_type="normal" tab_type="none" markup_type="table" page_count="1" subject_cut_size="24" option_view="title,nickname" show_browser_title="N" show_comment_count="N" show_trackback_count="N" show_category="Y" show_icon="N" show_secret="N" duration_new="48" order_target="regdate" order_type="desc" thumbnail_type="crop" />
+  <!--@end-->
+</div>
+<!--@end-->
+
+<!--@if($layout_info->sub_content_bottom_on === 'Y')-->
+<div class="subnav_widget">
+  <!--@if($layout_info->sub_content_bottom)-->
+  {$layout_info->sub_content_bottom}
+  <!--@end-->
+</div>
+<!--@else-->
+<!--@end-->

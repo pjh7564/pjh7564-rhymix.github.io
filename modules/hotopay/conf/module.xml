@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+	<grants>
+	</grants>
+	<actions>
+		<!-- 관리자 액션 -->
+		<action name="dispHotopayAdminDashBoard" type="view" menu_name="hotopay" admin_index="true" />
+		<action name="dispHotopayAdminConfig" type="view" />
+		<action name="dispHotopayAdminProductList" type="view" />
+		<action name="dispHotopayAdminInsertProduct" type="view" />
+		<action name="dispHotopayAdminModifyProduct" type="view" />
+		<action name="dispHotopayAdminInsertPurchase" type="view" />
+		<action name="dispHotopayAdminPurchaseList" type="view" />
+		<action name="dispHotopayAdminPurchaseData" type="view" />
+		<action name="dispHotopayAdminNotification" type="view" />
+
+		<action name="procHotopayAdminInsertConfig" type="controller" />
+		<action name="procHotopayAdminInsertProduct" type="controller" />
+		<action name="procHotopayAdminModifyProduct" type="controller" />
+		<action name="procHotopayAdminInsertPurchase" type="controller" />
+		<action name="procHotopayAdminInsertNotification" type="controller" />
+		<action name="procHotopayAdminPurchaseStatusChange" type="controller" method="GET|POST" />
+		<action name="procHotopayAdminDeleteProduct" type="controller" method="GET|POST" />
+
+		<!-- 인덱스 페이지 -->
+		<action name="dispHotopayIndex" type="view" index="true" />
+
+		<!-- 주문 액션 -->
+		<action name="dispHotopayOrderPage" type="view" route="orderPage/$product_id:int" />
+		<action name="procHotopayOrderProcess" type="controller" route="OrderProcess" standalone="false" />
+		<action name="dispHotopayPayProcess" type="view" route="PayProcess/$order_id:int" />
+		<action name="procHotopayPayStatus" type="controller" route="payStatus/$pay_pg:any/$pay_status:any/$order_id:any" standalone="false" method="GET|POST" />
+		<action name="dispHotopayOrderResult" type="view" route="OrderResult/$order_id:any" />
+
+		<!-- Callback -->
+		<action name="procHotopayTossPaymentsCallback" type="controller" route="api/v1/toss/paymentCallback" check_csrf="false" />
+
+		<!-- 일반 액션 -->
+		<action name="dispHotopayOrderList" type="view">
+			<route route="orderList" />
+			<route route="orderList/$target_member_srl:int" />
+		</action>
+	</actions>
+	<menus>
+		<menu name="hotopay" type="all">
+			<title xml:lang="ko">Hoto Pay</title>
+		</menu>
+	</menus>
+</module>

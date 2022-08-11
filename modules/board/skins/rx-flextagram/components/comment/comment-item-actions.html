@@ -1,0 +1,42 @@
+<div class="app-comment-item__actions">
+  <include target="comment-vote.html" />
+
+  <!--@if($grant->write_comment && $oDocument->isEnableComment())-->
+  {@
+    $comment_srl = $comment->get('comment_srl');
+    $editor_url = getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl);
+    $target_name = $comment->getNickName();
+  }
+  <a
+    class="comment-item-tool app-comment-item__link" 
+    onclick="onClickOpenComment('{$comment_srl}', '{$editor_url}', '{$target_name}'); return false;"
+  >{$lang->cmd_reply}</a>
+  <!--@end-->
+
+  <div cond="$grant->write_comment && $oDocument->isEnableComment()" class="app-dropdown">
+    <a class="app-comment-item__link app-dropdown-toggle">
+      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+    </a>
+
+    <div class="app-dropdown-menu" style="min-width: 70px">
+      <ul>
+        <li cond="$comment->isGranted()||!$comment->get('member_srl')">
+          <a href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}">
+            {$lang->cmd_modify}
+          </a>
+        </li>
+  
+        <li>
+          <a cond="$comment->isGranted()||!$comment->get('member_srl')" onclick="commentDelete('{$comment->comment_srl}', '{$mid}', '{$page}', '{$comment->document_srl}')">
+            {$lang->cmd_delete}
+          </a>
+        </li>
+  
+        <li>
+          <a href="#" onclick="doCallModuleAction('comment','procCommentDeclare','{$comment->comment_srl}'); return false">
+            {$lang->cmd_declare}
+          </a>
+        </li>
+      </ul>
+  </div>
+</div>

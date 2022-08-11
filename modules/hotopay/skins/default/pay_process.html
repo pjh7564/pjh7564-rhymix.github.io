@@ -1,0 +1,94 @@
+<include target="_header.html" />
+
+<section class="flex-container">
+  <div id="p_content">
+      <p id="p_title">결제 진행중입니다.</p>
+  
+      <div id="btn_layer">
+          <input type="button" id="ok_btn" class="btn_nm" value="결제창 열기" onclick="openPay();">
+          <input type="button" id="ok_btn" class="btn_nm" value="결제 취소하기" onclick="abortPay();">
+      </div>
+  </div>
+</section>
+
+{@
+if($vars->order_id < 1000):
+  $vars->order_id = str_pad($vars->order_id, 4, "0", STR_PAD_LEFT);
+endif;
+}
+
+<!--@if($purchase->pay_pg == 'toss')-->
+<script src="https://js.tosspayments.com/v1"></script>
+<script>
+var clientKey = '{$hotopay_config->toss_payments_client_key}';
+var tossPayments = TossPayments(clientKey);
+
+function openPay()
+{
+  tossPayments.requestPayment('{$purchase->pay_method_korean}', {
+    amount: {$purchase->product_purchase_price},
+    orderId: 'HT{$vars->order_id}',
+    orderName: '{$purchase->title}',
+    customerName: '{$logged_info->user_name}',
+    successUrl: window.location.origin + '/hotopay/payStatus/toss/success/HT{$vars->order_id}',
+    failUrl: window.location.origin + '/hotopay/payStatus/toss/fail/HT{$vars->order_id}',
+    <!--@if($hotopay_config->toss_payments_install_month >= 0)-->
+    cardInstallmentPlan: {$hotopay_config->toss_payments_install_month},
+    <!--@else-->
+    maxCardInstallmentPlan: {$hotopay_config->toss_payments_max_install_month},
+    <!--@endif-->
+    customerEmail: '{$logged_info->email_address}',
+    useEscrow: false
+  }).catch(function (error) {
+    if (error.code === 'USER_CANCEL') {
+      console.log('USER CANCEL');
+      // 취소 이벤트 처리
+    }
+  });
+}
+</script>
+
+<!--@elseif($purchase->pay_pg == 'paypal')-->
+<script>
+function openPay()
+{
+  var url ='{$purchase->pay_data->links->approve->href}';
+  if(url != '') location.href = url;
+}
+</script>
+
+<!--@elseif($purchase->pay_pg == 'kakaopay')-->
+<script>
+function openPay()
+{
+  var pc_url ='{$purchase->pay_data->data->next_redirect_pc_url}';
+  var mobile_url ='{$purchase->pay_data->data->next_redirect_mobile_url}';
+  var url = '';
+
+  if(mobilecheck()) {url = mobile_url;}
+  else {url = pc_url;}
+
+  if(url != '') location.href = url;
+}
+</script>
+
+<!--@elseif($purchase->pay_pg == 'n_account')-->
+<script>
+function openPay()
+{
+  var url = '{getNotEncodedUrl("","mid","hotopay","act","procHotopayPayStatus","pay_pg","n_account","pay_status","success","order_id","HT".$vars->order_id)}';
+  location.href = url;
+}
+</script>
+<!--@endif-->
+
+<script>
+function abortPay()
+{
+  window.location = '{getNotEncodedUrl("","mid","hotopay","act","procHotopayPayStatus","pay_pg","pg","pay_status","fail","order_id","HT".$vars->order_id,"code","PAY_PROCESS_CANCELED","message","유저가 결제를 취소하였습니다.")}';
+}
+
+$(document).ready(function() {
+  openPay();
+});
+</script>

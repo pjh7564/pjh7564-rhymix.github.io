@@ -1,0 +1,2 @@
+<?php /* 2.0.21:site_and_module#30:modules_info:52,56:module_srl,mid,browser_title */
+return unserialize('a:2:{i:0;i:1659077465;i:1;a:2:{i:0;O:8:"stdClass":3:{s:10:"module_srl";i:52;s:3:"mid";s:5:"board";s:13:"browser_title";s:37:"$user_lang->userLang20220728101623002";}i:1;O:8:"stdClass":3:{s:10:"module_srl";i:56;s:3:"mid";s:6:"notice";s:13:"browser_title";s:12:"공지사항";}}}');

@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.widgetContainer form{ margin:0; padding:0;}
+.widgetContainer fieldset{ border:0; margin:0; padding:0;}
+
+.widgetPoint div{ font-size:12px; font-weight:600}
+.widgetPoint div{ margin:0}
+.widgetPoint div.graph{ height:5px; overflow:hidden; background:#e5e5e5; margin: 5px 0; border-radius: 2em}
+.widgetPoint div.graph div{ height: 5px; border-radius: 2em; background: #747cfd}
+.widgetPoint div.point{ display: inline-block; font-size:10px; float:left; color:#888;}
+.widgetPoint div.percentage{ display: inline-block; font-size:10px; float:right; color:#888}
+.widgetPoint div{ color:#333 }
+
+.widgetContainer.black .widgetContainer form{ margin:0; padding:0}
+.widgetContainer.black .widgetContainer fieldset{ border:0; margin:0; padding:0}
+
+.widgetContainer.black .widgetPoint div{ font-size:12px; font-family:Tahoma; font-weight:bold;}
+.widgetContainer.black .widgetPoint div{ margin:0;}
+.widgetContainer.black .widgetPoint div.graph{ height:5px; overflow:hidden; background:#e5e5e5; font-size:0; line-height:0;}
+.widgetContainer.black .widgetPoint div.graph div{ width:0%;}
+.widgetContainer.black .widgetPoint div.point{ font-size:10px; font-family:Tahoma; float:left; color:#888;}
+.widgetContainer.black .widgetPoint div.percentage{ font-size:10px; font-family:Tahoma; float:right; color:#888;}
+.widgetContainer.black .widgetPoint div{ color:#999;}

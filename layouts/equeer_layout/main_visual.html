@@ -1,0 +1,14 @@
+<div class="main-visual-wrapper  <!--@if($layout_info->top_banner_on === 'Y')-->top_banner_active<!--@end-->" style="display: none"|cond="$layout_info->main_visual === 'N'">
+  <!--@if($layout_info->main_visual_custom === 'Y')-->
+    <!--@if($layout_info->main_visual_gradient === 'N')-->
+    <div class="main-visual-wrap" style="background: {$layout_info->main_visual_bg_color1}">
+    <!--@else-->
+    <div class="main-visual-wrap" style="background: linear-gradient(135deg, {$layout_info->main_visual_bg_color1}, {$layout_info->main_visual_bg_color2})">
+    <!--@end-->
+  <!--@else-->
+  <div class="main-visual-wrap">
+  <!--@end-->
+      {@ $_main_visual_img = $layout_info->main_visual_bg}
+      <div class="main-visual" style="background: url('{$_main_visual_img}') no-repeat center center; background-size: {$layout_info->main_visual_bg_size}"|cond="$_main_visual_img"></div>
+    </div>
+</div>

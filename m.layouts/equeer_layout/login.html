@@ -1,0 +1,54 @@
+<div class="loginPop loginPop_bg">
+    <div class="loginPop_window">
+      <!--@if($layout_info->logo_img)-->
+      <div class="icon-wrapper" style="background: url('{$layout_info->logo_img}') no-repeat center center">
+      <!--@elseif($layout_info->logo_text)-->
+      <div class="icon-wrapper" style="background: none">
+      <span>{$layout_info->logo_text}</span>
+      <!--@else-->
+      <div class="icon-wrapper">
+      <!--@end-->
+      <div class="loginPop loginPop_closeBtn"><i class="loginPop fa fa-times" aria-hidden="true"></i></div>
+    </div>
+
+      <div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'layouts/newbasics'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+        <p>{$XE_VALIDATOR_MESSAGE}</p>
+      </div>
+
+      <form id="loginForm" ruleset="@login" action="{getUrl()}" method="post" autocomplete="off">
+        <input type="hidden" name="success_return_url" value="{$referer_url}" />
+        <input type="hidden" name="act" value="procMemberLogin" />
+        <input type="hidden" name="xe_validator_id" value="layouts/newbasics" />
+
+        <fieldset>
+          <input type="text" name="user_id" required="" placeholder="이메일 주소">
+          <input type="password" name="password" required="" placeholder="비밀번호">
+          <div class="keepSign">
+            <input type="checkbox" name="keep_signed" id="keepid_optn" data-lang="{$lang->about_keep_warning}"  value="Y" />
+            <label for="keepid_optn" class="kS_ck">로그인 상태 유지</label>
+          </div>
+
+          <a class="fogotten_password" href="{getUrl('act','dispMemberFindAccount')}">비밀번호를 잊어버리셨나요?</a>
+          <div class="social">
+            <input class="btn_primary_round loginPop_loginBtn" type="submit" value="로그인" />
+          </div>
+
+          <!--@if($layout_info->socialLogin=='Y')-->
+          <div class="social_login_title">
+            <span class="divider-with-text">Or continue with</span>
+          </div>
+          <div class="social_login">
+            {@ $oSocialxeModel = getModel('socialxe'); }
+            <a class="kk" href="{$oSocialxeModel->snsAuthUrl('kakao', 'login')}">Kakao</a>
+            <a class="nb" href="{$oSocialxeModel->snsAuthUrl('naver', 'login')}">Naver</a>
+          </div>
+          <!--@end-->
+
+
+          <div class="footer">
+            <span>아직 계정이 없으세요?</span><a href="{getUrl('act','dispMemberSignUpForm')}">회원가입</a>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,33 @@
+<load target="footer.scss" vars="RxFlextagramTheme::$variables" />
+
+<footer class="app-footer">
+    <div class="app-container">
+        <div style="padding:0px 0px 0px 0px !important;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:300px">
+                <tbody>
+                    <tr>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/1cebb08f41bc8558f58f97e9a426bf1d.png" alt="u.png" style="height: 30px; width: 30px;" data-pswp-pid="1"></a></td>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/42fb92f37f48fae874857d3fc2168f2e.png" alt="face.png" style="height: 30px; width: 30px;" data-pswp-pid="2"></a></td>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/77a31c0a93b2e4adef296aa40a5e1f5a.png" alt="home.png" style="height: 30px; width: 30px;" data-pswp-pid="3"></a></td>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/af8cc6d43c2df2734d5b1ab897027cb9.png" alt="tw.png" style="height: 30px; width: 30px;" data-pswp-pid="4"></a></td>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/cbaf5f02f6ed0a8883089b0d81c54301.png" alt="blog.png" style="height: 30px; width: 30px;" data-pswp-pid="5"></a></td>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/d79d5603ad9e32f2265ddd2251b1ff8a.png" alt="insta.png" style="height: 30px; width: 30px;" data-pswp-pid="6"></a></td>
+                        <td><a href="#"><img src="/files/attach/images/2022/08/02/aba87118eabf59aedc62d9f93bba69c1.png" alt="url.png" style="height: 30px; width: 30px;" data-pswp-pid="7"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <ul cond="$footer_menu->list" class="app-footer-nav">
+            <!-- prettier-ignore -->
+            <li loop="$footer_menu->list=>$key1,$val1" class="active"|cond="$val1['selected']">
+                <!-- prettier-ignore -->
+                <a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">{$val1['link']}</a>
+            </li>
+        </ul>
+
+        <div class="app-footer-copyright">
+            {$layoutConfig['footer_copyright']}
+        </div>
+    </div>
+</footer>

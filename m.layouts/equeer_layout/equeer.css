@@ -1,0 +1,400 @@
+@charset "utf-8";
+
+/* Layout */
+
+::selection {background: #cce2ff; color: rgba(0,0,0,.87); text-shadow:none}
+::-moz-selection {background: #cce2ff;color: rgba(0,0,0,.87); text-shadow:none}
+::-webkit-selection {background: #cce2ff; color: rgba(0,0,0,.87); text-shadow:none}
+
+::-webkit-input-placeholder {color: #999}
+:-moz-placeholder {color: #999}
+::-moz-placeholder {color: #999}
+:-ms-input-placeholder {color: #999}
+
+* {font-family: 'Noto Sans KR', 'Noto Sans Korean';}
+* {box-sizing: border-box;}
+html, div, p, body, button, input, select, table, textarea, pre, code {-webkit-font-smoothing: none; -webkit-font-smoothing:subpixel-antialiased; -webkit-font-smoothing:antialiased}
+p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {margin:0; padding:0; -webkit-text-size-adjust:none; border:none; background:transparent}
+input, textarea, select, button, table {border-collapse:collapse; -webkit-font-smoothing: antialiased}
+img, fieldset, button {border: 0; outline:0}
+a {color: #777; text-decoration: none}
+body{border:0; margin:0; padding:0; background-color:#fff;background-image: url(../equeer_layout/img/Background.png);}
+
+input:focus {outline: 0}
+
+.xe-widget-wrapper {
+  background-color: white;
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .container-fluid {width: 1140px; padding: 0 30px; margin: 0 auto}
+
+  .min-width-768 {display: block}
+  .max-width-767 {display: none}
+
+  .navdraw_bar {display: none}
+  .navigation_drawer-wrap {display: none}
+  .navigation_drawer-bg {display: none}
+  .navigation_drawer {display: none}
+
+  .search_draw-btn {display: none}
+  .search_drawer-wrap {display: none}
+  .search_drawer-bg {display: none}
+  .search_drawer {display: none}
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .container-fluid {width: 100%; padding: 0}
+
+  .max-width-767 {display: block}
+  .min-width-768 {display: none}
+
+  body.scroll-lock {overflow: hidden}
+
+  .navdraw_bar {display: block}
+  .navigation_drawer-wrap {display: block}
+  .navigation_drawer-bg {display: block}
+  .navigation_drawer {display: block}
+
+  .search_draw-btn {display: block}
+  .search_drawer-wrap {display: block}
+  .search_drawer-bg {display: block}
+  .search_drawer {display: block}
+
+  header {height: 99px !important}
+  .header > .float-right {padding-right: 4%}
+  .header > .float-right > form {display: none}
+  .header, .header .float-left {height: 99px !important; overflow: hidden}
+  .header .float-left {margin-right: 0 !important}
+  .header .float-left > h1.logo-item {margin-right: 0 !important}
+  .header .float-left > h1.logo-item {height: 50px !important; margin-left: 50px}
+  .header .float-left > h1.logo-item div {height: 1.8em !important}
+  .header .float-left > h1.logo-item a {float: left; height: 50px !important}
+  .header .float-left > h1.logo-item span {top: 8px !important}
+  .header .gnb-wrapper {height: 45px; overflow: hidden; float: none !important}
+  .header .gnb-wrap {width: 100%; float: none !important; overflow: hidden; height: 45px}
+  .header .gnb {float: none !important; position: absolute; height: 45px; width: 100%; overflow: hidden; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0, 0, 0, 0)}
+  .header .gnb > ul{position: relative; white-space: nowrap; overflow-y: hidden; height: 60px}
+  .header .gnb > ul > li > a {padding: 15px 16px !important}
+  .header .gnb > ul > li:hover > a {background: #f4f4f4}
+  .float-right .btn_header_login {padding: 8px 18px !important}
+  .gnb .popover {display: none}
+  .member .popover {display: none}
+  .popover-usermenu-wrap {position: fixed !important; z-index: 1000; top: 55px !important; right: 4% !important}
+
+  .loginPop_window {width: 100% !important}
+  .float-right .member .member_profile {top: 0; right: 4%; padding: 10px 0 10px 5px !important}
+  #loginForm {padding: 4% !important}
+  .float-right .member .profile_img {width: 32px !important; height: 32px !important}
+  .float-right .btn_header_login {right: 4%; top: 0}
+
+  .main-visual-wrapper {padding: 4%}
+  .main-visual-wrap {margin: 0 !important}
+  .main-visual .row-wrap {background: rgba(0,0,0,0.3); height: 100%}
+  .main-visual .row-wrap > .row {padding: 90px 0 0 10%; width: 100%; height: 100%}
+  .main-visual .row-wrap > .row > h1 {width: 400px}
+
+  .body-wrap {padding-top: 100px !important}
+  .content-wrapper {padding: 0 !important}
+  .content-wrap {width: 100% !important; padding: 0 !important}
+  .subnav-wrap {width: 100% !important; padding: 4% 4% 0 !important}
+
+  .footer_menu {padding: 0 4%}
+  .footer_bottom {padding: 0 4%}
+}
+
+@media (max-width: 379px) {
+  #loginForm .fogotten_password {float: left !important; padding-top: 8%; width: 100%; text-align: left}
+}
+
+
+header{position: fixed; top: 0; left: 0; width: 100%; height: 60px; z-index: 100; background:#fff; box-shadow: 0 1px 1px 0 rgba(81, 99, 120, 0.2)}
+.header{position: relative; height: 60px}
+.header .float-left{height: 60px; margin-right: 24px}
+
+/* Navigation Drawer */
+.navdraw_bar {position: absolute; padding: 12px 20px; cursor: pointer; z-index: 9999; color: #3d3d3d; font-size: 20px}
+.navigation_drawer-wrap {position: fixed; z-index: -1; width: 100%; height: 100%}
+.navigation_drawer-bg {top: 0; position: fixed; z-index: -1; background: rgba(0,0,0,0.3); width: 100%; height: 100%}
+.navigation_drawer-bg {visibility: hidden; opacity: 0; transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out}
+.navigation_drawer {background: #fff; width: 260px; height: 100%; padding: 4% 30px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); overflow-x: hidden}
+.navigation_drawer {visibility: hidden; opacity: 0;
+  transform: translateX(-50%) scaleX(0.8);
+  transform-origin: left;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s;
+  -webkit-transform: translateX(-50%) scaleX(0.8);
+  -webkit-transform-origin: left;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 0.3s}
+  .navigation_drawer-wrap.on {z-index: 9998}
+.navigation_drawer-wrap.on .navigation_drawer-bg {visibility: visible; opacity: 1}
+.navigation_drawer-wrap.on .navigation_drawer {visibility: visible; opacity: 1; -webkit-transform: translateX(0) scaleX(1); transform: translateX(0) scaleX(1)}
+
+/* Search Drawer */
+.search_draw-btn {float: left; padding: 12px 10px; right: 0; cursor: pointer; color: #3d3d3d; font-size: 20px}
+.search_drawer-wrap {position: fixed; width: 100%; right: 0}
+.search_drawer-bg {top: 0; position: fixed; z-index: -1; background: rgba(0,0,0,0.3); width: 100%; height: 100%}
+.search_drawer-bg {visibility: hidden; opacity: 0; transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out}
+
+.search_drawer {background: #fff; width: 100%; height: 60px; padding: 0 4%; border-radius: 0 0 2em 2em; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1)}
+.search_drawer {visibility: hidden; opacity: 0;
+  transform: translateY(-10%) scale(0.9);
+  transform-origin: top;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition-duration: 0.3s;
+  -webkit-transform: translateY(-10%) scale(0.9);
+  -webkit-transform-origin: top;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  -webkit-transition-duration: 0.3s}
+
+.search_drawer > i {float: left; padding: 20px 0; color: #999; font-size: 20px}
+
+.search_drawer-wrap.on {z-index: 10000}
+.search_drawer-wrap.on .search_drawer-bg {visibility: visible; opacity: 1}
+.search_drawer-wrap.on .search_drawer {visibility: visible; opacity: 1; -webkit-transform: scale(1); transform: scale(1); border-radius: 0}
+
+/* Search Drawer - Search Form */
+.search_drawer .search_form {float: left; margin: 10px; width: 74%}
+.search_drawer .search_form {transition: all 0.3s; transform-origin: right; -webkit-transition: all 0.3s}
+
+.search_drawer .search_form input[type=text] {float: left; display: inline-block; position: relative; font-size: 16px; padding: 10px 0; width: 100%; border-radius: 2em 0 0 2em; color: #3d3d3d}
+.search_drawer .search_form input[type=text] {transition: all 0.4s; -webkit-transition: all 0.4s; -moz-transition: all 0.4s; -o-transition: all 0.4s}
+.search_drawer .search_draw-close {float: right; padding: 15px 10px; right: 0; cursor: pointer; color: #3d3d3d; font-size: 20px}
+
+/* NAVIGATION */
+.ac_menu {list-style: none; text-align:left; padding:30px 10% 20px 0}
+.ac_menu ul {display: none}
+.ac_menu li {-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; line-height:1.4}
+.ac_menu li.md-hide.active > a, .ac_menu li.md-hide.active label {color:#747cfd !important; font-weight:600}
+.ac_menu li.active li.active a:before {content: ""; display:block; width:8px; position:absolute; height:11px; border:solid #fff; border-width:0 2px 2px 0; left:-4px; top:6px; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg)}
+.ac_menu li li {padding-left: 20px}
+.ac_menu input[type=checkbox] {position: absolute; opacity: 0}
+
+.ac_menu ul a {position: relative; text-transform:uppercase; display: block; padding: 8px 0; color: #a5a5a5; font-size: 15px}
+.ac_menu label, .ac_menu > li > a {cursor: pointer; display: block; font-size:18px; font-weight: 600; padding: 10px 0; color: #3d3d3d}
+.ac_menu input[type=checkbox]:checked + label {color:#3d3d3d}
+.ac_menu input[type=checkbox]:checked + label::before {-webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%)}
+.ac_menu input[type=checkbox]:checked + label + ul, .ac_menu input[type=checkbox]:checked + label:nth-of-type(n) + ul {list-style: none; margin:4px 0 16px; display: block}
+.ac_menu > li:last-of-type > label, .ac_menu > li:last-of-type > a, .ac_menu > li > ul > li:last-of-type label, .ac_menu > li > ul > li:last-of-type a {box-shadow: none}
+.ac_menu ul label, .ac_menu ul a {background: transparent; padding-left: 16px}
+
+
+/* Header Logo */
+.header .float-left > h1.logo-item{display: inline-block; height: 60px; margin-right: 20px}
+.header .float-left > h1.logo-item{transition: opacity 200ms; -moz-transition: opacity 200ms; -webkit-transition: opacity 200ms; -o-transition: opacity 200ms}
+.header .float-left > h1.logo-item:hover{opacity:0.8}
+.header .float-left > h1.logo-item a {float: left; height: 60px}
+.header .float-left > h1.logo-item span {position: relative; top: 12px; color: #3d3d3d}
+.header .float-left > h1.logo-item div {background: url(img/logo.svg) no-repeat left center; width: 100px; height: 50px; margin: 5px 0; cursor: pointer; background-size: contain !important}
+
+.header .gnb > ul {list-style-type: none;}
+.header .gnb > ul > li{display: inline-block}
+.header .gnb > ul > li > a{text-decoration: none; display: inline-block; line-height: 1; color: #999; font-weight: 700; font-size: 13px; padding: 23px 15px 22px; border-bottom: 2px solid rgba(255, 255, 255, 0)}
+
+/* animation */
+.header .gnb > ul > li > a{transition: all 150ms; -moz-transition: all 150ms; -webkit-transition: all 150ms; -o-transition: all 150ms}
+
+.header .gnb > ul > li:hover > a{color: #3d3d3d;}
+.header .gnb > ul > li.active > a{color: #3d3d3d; border-bottom: 2px solid #3d3d3d}
+.header .gnb > ul > li:hover > .popover-animationLeft {visibility: visible; opacity: 1; -webkit-transform: scale(1); transform: scale(1)}
+
+/* float */
+.float-left {float: left}
+.float-right {float: right}
+
+/* User is Logged */
+
+.float-right .member{float: left}
+.float-right .member .member_profile {float: right; display: inline-block; line-height: 1; padding: 10px}
+.float-right .member .profile_img {opacity: 1; display: inline-block; border-radius: 50em; width: 38px; height: 38px; transition: opacity 0.2s; -webkit-transition: opacity 0.2s; -moz-transition: opacity 0.2s; -o-transition: opacity 0.2s}
+.float-right .member:hover .profile_img {opacity: 0.8}
+
+/* a tag Animation*/
+.a-hover-primary a {transition: color 0.2s; -webkit-transition: color 0.2s; -moz-transition: color 0.2s; -o-transition: color 0.2s}
+.a-hover-primary a:hover {color: #747cfd !important; text-decoration: none !important}
+
+/* PopOver Animation */
+.popover-animationRight {
+  visibility: hidden; opacity: 0;
+  transform: scale(.8);
+  transform-origin: top right;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition-duration: .3s;
+  -webkit-transform: scale(.8);
+  -webkit-transform-origin: top right;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  -webkit-transition-duration: .3s}
+.popover-link:hover .popover-animationRight {visibility: visible; opacity: 1; -webkit-transform: scale(1); transform: scale(1)}
+.popover-usermenu-wrap.on .popover-animationRight {visibility: visible; opacity: 1; -webkit-transform: scale(1); transform: scale(1)}
+
+.popover-animationLeft {
+  visibility: hidden; opacity: 0;
+  transform: scale(.8);
+  transform-origin: top right;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition-duration: .3s;
+  -webkit-transform: scale(.8);
+  -webkit-transform-origin: top left;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  -webkit-transition-duration: .3s}
+.popover-link:hover .popover-animationLeft {visibility: visible; opacity: 1; -webkit-transform: scale(1); transform: scale(1)}
+.popover-usermenu-wrap.on .popover-animationLeft {visibility: visible; opacity: 1; -webkit-transform: scale(1); transform: scale(1)}
+
+/* PopOver */
+.popover-wrap {position: absolute; top: 60px; right: 30px}
+.popover {position: absolute; width: 200px; padding: 15px 20px; background-color: #fff; border-radius: 4px; box-shadow: 0 0 1px 1px rgba(31,45,61,.15);}
+
+ul.popover-list li {list-style-type:none}
+ul.popover-list li a {display: inline-block; padding: 8px 20px 8px 0; font-size: 15px; color: #3c4858; font-weight: 500}
+ul.popover-list li a > i {padding-right: 10px}
+
+.popover-usermenu-wrap {position: absolute; top: 60px; right: 30px}
+.popover-usermenu {right: 0; top: 0; width: 260px}
+
+.popover-usermenu > a{position: absolute; display: inline-block; top: 25px; right: 20px; width: 40px; height: 40px; padding: 10px; text-align: center}
+
+.popover-usermenu .popover-usermenu-userinfo {border-bottom: 1px solid #e5e5e5; padding-bottom: 15px; list-style: none}
+.popover-usermenu .popover-usermenu-userinfo li a {display: inline-block; padding: 5px 20px 5px 0}
+.popover-usermenu .popover-usermenu-userinfo li:nth-child(1) a {font-size: 14px; color: #3c4858}
+.popover-usermenu .popover-usermenu-userinfo li:nth-child(2) a {font-size: 13px; color: #8492a6}
+.popover-usermenu .popover-userpoint {padding-top: 15px}
+
+.popover-usermenu ul.popover-list {padding: 12px 0 2px}
+
+/* User is no logged */
+.float-right .btn_header_login{float: left; display: inline-block; margin: 10px 0 0 10px; padding: 11px 24px}
+
+/* header > float-right */
+.float-right .search_form {float: left; margin: 10px; background: #f5f5f5; border-radius: 2em}
+.float-right .search_form {transition: all 0.3s; transform-origin: right; -webkit-transition: all 0.3s; -webkit-transform-origin: right}
+.float-right .search_form:hover {float: left; margin: 10px; background: #eeeff3}
+
+.float-right .search_form input[type=text] {float: left; display: inline-block; position: relative; font-size: 16px; padding: 10px 20px; width: 80px; border-radius: 2em 0 0 2em; color: #f5f5f5}
+.float-right .search_form input[type=text] {transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); transform-origin: right; -webkit-transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); -webkit-transform-origin: right}
+.float-right .search_form input[type=text]:hover {color: #eeeff3}
+.float-right .search_form input[type=text]:focus {width: 160px; color: #9a9b9e}
+
+.float-right .search_form > .btn {font-family: "FontAwesome"; box-shadow: none; background: none; border: none; font-size: 18px; color: #96979e; padding: 7px 14px 8px !important; height: 100% !important; text-shadow: none}
+.float-right .search_form > .btn {transition: all 300ms; -moz-transition: all 300ms; -webkit-transition: all 300ms; -o-transition: all 300ms}
+.float-right .search_form > .btn:hover {color: #747cfd}
+.float-right .search_form > .btn:focus {outline: none}
+
+/* Main Visual */
+.main-visual-wrap {width: 100%; height: 412px; margin-top: 30px; background: linear-gradient(135deg, #62c6ac, #75ffcc); border-radius: 4px; overflow: hidden; box-shadow: 0 6px 12px rgba(193, 193, 208, 0.2)}
+.main-visual {width: 100%; height: 100%; background: url(img/main_visual_bg.png) no-repeat center}
+.main-visual .row {position: relative; padding: 90px 84px; width: 550px; word-break: keep-all}
+.main-visual .row h1 {line-height: 1.4; color: #fff; font-size: 56px; font-weight: 800; margin-bottom: 10px; height: 156px; overflow: hidden}
+.main-visual .row a {display: inline-block; margin: 20px 10px 0 0}
+
+/* Container */
+.body-wrap{width: 100%; padding-top: 60px}
+.content-wrapper {padding: 30px 0}
+.content-wrap {float: left; width: 820px; padding: 40px 10px 30px 0}
+.subnav-wrap {float: right; width: 260px; padding: 40px 0 30px 10px}
+.subnav_widget {padding-bottom: 30px; width: 100%}
+.subnav_widget div.subnav-widget-title {width: 100%; height: 37px; border-bottom: 1px solid #e5e5e5; margin-bottom: 20px}
+.subnav_widget div.subnav-widget-title > span.float-left {color: #3d3d3d; font-weight: 600; font-size: 16px; padding-bottom: 14px; border-bottom: 1px solid #3d3d3d}
+.subnav_widget div.subnav-widget-title > a.float-right {color: #999; font-weight: 500; font-size: 12px; padding-bottom: 17px}
+.subnav_widget div.subnav-widget-title > a.float-right span {padding-right: 5px}
+.subnav_widget a {text-decoration: none; color: #707070}
+.subnav_banner {width: 100%; height: auto; overflow: hidden; border-radius: 4px; line-height: 0; background: #fff; margin-bottom: 40px; transition: all 0.3s; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s}
+.subnav_banner:hover {box-shadow: 0 1px 8px rgba(81, 99, 120, 0.1)}
+.subnav_banner:active {box-shadow: 0 1px 3px rgba(81, 99, 120, 0.1)}
+.subnav_banner img {width: 100%; height: auto}
+.subnav_banner:hover img {opacity: 0.8}
+
+/* UI Component - button */
+.btn_primary_line{padding: 10px; border-radius: 4px; border: 1px solid #02b875; color: #02b875 !important; text-decoration: none; transition: all 0.2s; -moz-transition: all 0.2s; -webkit-transition: all 0.2s; -o-transition: all 0.2s}
+.btn_primary_line:hover{background-color: #02b875; color: #fff !important}
+.btn_twitter_line{padding: 10px; border-radius: 4px; border: 1px solid #1da1f2; color: #1da1f2 !important; text-decoration: none; transition: all 0.2s; -moz-transition: all 0.2s; -webkit-transition: all 0.2s; -o-transition: all 0.2s}
+.btn_twitter_line:hover{background-color: #1da1f2; color: #fff !important}
+
+.btn_white_roundLine {cursor: pointer; padding: 12px 20px; color: #fff; font-size: 13px; font-weight: 600; border: 2px solid #fff; border-radius: 2em; background: none !important}
+.btn_white_roundLine {transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms}
+.btn_white_roundLine:hover {color: #000; background: #fff !important; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1)}
+.btn_white_roundLine:active {color: #000; background: #fcfcfc !important; outline: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)}
+.btn_white_roundLine:focus {outline: none !important}
+
+.btn_primary_round {cursor: pointer; padding: 12px 20px; color: #fff; font-size: 13px; font-weight: 600; border-radius: 2em; background: #02b875 !important}
+.btn_primary_round {transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms}
+.btn_primary_round:hover {color: #fff; background: #00d083 !important; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1)}
+.btn_primary_round:active {color: #fff; background: #00af6e !important; outline: none; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)}
+.btn_primary_round:focus {outline: none !important}
+
+.btn_secondary_round {cursor: pointer; padding: 12px 20px; color: #fff; font-size: 13px; font-weight: 600; border-radius: 2em; background: #747cfd; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms}
+.btn_secondary_round:hover {color: #fff; background: #888fff; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2)}
+.btn_secondary_round:active {color: #fff; background: #686fde; outline: none; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1)}
+
+input[type=submit]:active {outline: none !important}
+input[type=submit]:focus {outline: none !important}
+
+/* Footer */
+footer{clear: both; background:#fff; border-top: 1px solid #f1f1f1}
+.footer_top{border-bottom: 1px solid #e5e5e5; height: 48px}
+.footer_menu{padding-top: 15px; padding-bottom: 15px}
+.footer_menu .widgetContainer a.title{color: #808080}
+.footer_bottom{color: #808080; height: 90px}
+.footer_bottom p{padding-top: 5px; padding-bottom: 20px}
+.ft_menu{margin: 25px 0 20px; padding: 0}
+.ft_menu li{display: inline; list-style: none}
+.ft_menu li a{text-decoration: none; color: #808080; padding-right: 15px; transition: all 0.3s; -moz-transition: all 0.3s; -webkit-transition: all 0.3s; -o-transition: all 0.3s}
+.ft_menu li a:hover{font-weight: bold}
+
+
+/* Login PopUp */
+.loginPop_bg {position:fixed; z-index:10000; left:0; top:0; height:100%; width:100%; background-color:rgba(0,0,0,0.2); overflow-x: hidden; opacity:0; visibility:hidden; -webkit-transition:opacity 0.5s, visibility 0.5s; -moz-transition:opacity 0.5s, visibility 0.5s; transition:opacity 0.05s 0s, visibility 0.5s}
+
+.loginPop_bg.on {opacity:1; visibility:visible; -webkit-transition:opacity 0.5s, visibility 0.5s; -moz-transition:opacity 0.5s, visibility 0.5s; transition:opacity 0.5s, visibility 0.5s}
+.loginPop_window {left: 0; top: 0; position:absolute; background:#fff; width:500px; height:100%; min-height: 658px; padding: 20px; text-align:center; -webkit-backface-visibility:hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);}
+.loginPop_window {transform: scale(0.8); transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); -webkit-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); -moz-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); -o-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)}
+.loginPop_bg.on .loginPop_window {transform: scale(1)}
+
+.loginPop_window .icon-wrapper {background: url(img/logo.svg) no-repeat center center; width: 100%; height: 50px; margin: 5px 0 40px; padding: 0 10px}
+.loginPop_window .icon-wrapper > span {font-size: 26px; font-weight: 700; top: 10px; left: 4%; position: relative}
+.loginPop_closeBtn {position: relative; display: inline-block; float: right; top: 10px; cursor: pointer; width: 40px; height: 40px; padding: 11px; font-size: 16px; color: #96a3b4; background: #e5e9f2; border-radius: 2em; line-height: 1; transition: all 0.3s; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -o-transition: all 0.3s}
+.loginPop_closeBtn:hover {color: #fff; background: #02b875}
+
+#loggedInfo a {display:block; border-bottom:1px solid #fafafa; line-height:1; padding:16px 0; font-size:13px; color:#666}
+#loggedInfo a:hover {background:rgba(0,0,0,0.05)}
+#loggedInfo a:last-of-type {border-bottom:0}
+
+#loginForm {padding:10%}
+#loginForm input {height:48px; width:100%}
+#loginForm input[type=text] {font-size:13px; line-height:48px; background:#f7f7f7; padding:0 16px; margin-bottom:20px; border-radius: 4px}
+#loginForm input[type=password] {font-size:13px; line-height:48px; background:#f7f7f7; padding:0 16px; margin-bottom:20px; border-radius: 4px}
+#loginForm input:focus {background:#eee}
+#loginForm input[type=submit] {width: 100%; color: #fff; border: none; margin-bottom: 20px; font-size: 16px; font-weight: 800}
+
+#loginForm .fogotten_password {float: right; display: inline-block; color: #999;  font-size: 14px; text-decoration: none; margin-bottom: 30px}
+
+#loginForm .social a {float:left; display:block; width:50%; height:48px; line-height:48px; font-size:13px; font-weight:bold; color:#fff; margin-bottom:8px}
+
+#loginForm .social_login a {float:left; display:block; width:49%; height:48px; line-height:48px; font-size:16px; border-radius: 4px; font-weight:bold; color:#fff; margin-bottom:8px; transition: all 0.2s; -webkit-transition: all 0.2s; -moz-transition: all 0.2s; -o-transition: all 0.2s}
+#loginForm .kk {background:#fedc00; margin-right: 2%}
+#loginForm .nb {background:#1ec800; margin-right:0}
+#loginForm .kk:hover {background: #e4c600}
+#loginForm .nb:hover {background: #1bb100}
+
+#loginForm .social_login_title {display: inline-block; width: 100%; height: 16px; text-align: center; margin: 40px 0}
+#loginForm .social_login_title .divider-with-text {position: relative; text-align: center; color: #202020; font-size: 15px; font-weight: 600}
+#loginForm .social_login_title .divider-with-text:after, #loginForm .social_login_title .divider-with-text:before {position: absolute; height: 1px; content: ""; top: 50%; width: 50px; background: #e0e6ed;}
+#loginForm .social_login_title .divider-with-text:before {left: -70px}
+#loginForm .social_login_title .divider-with-text:after {right: -70px}
+
+#loginForm .footer {float: left; font-size:16px; padding: 10% 0}
+#loginForm .footer > span {color: #999; padding-right: 10px}
+#loginForm .footer > a {color: #02b875; font-weight: 500; padding: 4px 8px; font-size: 16px}
+
+.loginPop_bg .message {margin:8px 8px 0; text-align:center; padding:0}
+
+#loginForm .keepSign {float: left}
+#loginForm .keepSign label {display: inline-block; float: left; color: #999; font-weight: 500; font-size: 14px}
+#loginForm .keepSign label:hover {color:#02b875}
+
+.keepSign input[type="checkbox"] {display:none; visibility:hidden}
+.keepSign input[type="checkbox"] + label {transition:border-color 0.3s ease-in-out, background-color 0.3s ease-in-out}
+.keepSign input[type="checkbox"] + label:before {display:inline-block; content:""; margin-right: 6px; width:16px; height:16px; border-radius: 4px; background-color:#eee; border:none; vertical-align:middle}
+.keepSign input[type="checkbox"]:checked + label:before {background-color:#02b875; background-repeat:no-repeat; background-position:50% 50%; -webkit-background-size:10px auto; -moz-background-size:10px auto; -o-background-size:10px auto; background-size:10px auto; background-image: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjIwcHgiIGhlaWdodD0iMTVweCIgdmlld0JveD0iMCAwIDIwIDE1Ij4NCjxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iNy4xNDMsMTQuOTM4IDAsNy43OTYgMi4wMjEsNS43NzYgNy4xNDMsMTAuODk4IDE3Ljk3OSwwLjA2MiAyMCwyLjA4MiAiLz4NCjwvc3ZnPg0K');}

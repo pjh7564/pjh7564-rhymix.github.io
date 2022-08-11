@@ -1,0 +1,260 @@
+@charset "UTF-8";
+html {
+  width: unset;
+  height: unset;
+  min-width: unset;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html.cke_panel_container,
+html.cke_panel_container body {
+  background-color: #fff;
+  color: #000;
+}
+html.cke_panel_container.color_scheme_dark.cke_auto_dark_mode,
+html.cke_panel_container body.color_scheme_dark.cke_auto_dark_mode {
+  background-color: #333;
+  color: #fff;
+}
+body.cke_editable {
+  width: unset;
+  height: unset;
+  min-width: unset;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+}
+body.cke_editable.color_scheme_dark.cke_auto_dark_mode {
+  background-color: #333;
+  color: #fff;
+}
+body.color_scheme_dark.cke_auto_dark_mode .cke_wysiwyg_div {
+  background-color: #333;
+  color: #fff;
+}
+p.editor_autosaved_message.autosave_message {
+  display: none;
+  background: #e0e0e0;
+  color: #000;
+  padding: 10px;
+  margin: 0;
+  line-height: 1.2;
+}
+.color_scheme_dark p.editor_autosaved_message.autosave_message {
+  background: #222;
+  color: #fff;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom {
+  background: #333;
+  border-color: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_button_on,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_button_on {
+  background: #000;
+  border-color: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_button_icon,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_combo_button,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_button_arrow,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_button_label,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_button_icon,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_combo_button,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_button_arrow,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_button_label {
+  filter: invert(1);
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top.cke_dialog_body,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom.cke_dialog_body {
+  background: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_title,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_title {
+  background: #333;
+  color: #fff;
+  border-bottom-color: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_title .cke_dialog_close_button,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_title .cke_dialog_close_button {
+  color: #fff;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_tabs,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_tabs {
+  background: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_tabs .cke_dialog_tab,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_tabs .cke_dialog_tab {
+  background: #555;
+  color: #999;
+  border-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_tabs .cke_dialog_tab_selected,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_tabs .cke_dialog_tab_selected {
+  background: #777;
+  color: #fff;
+  border-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_contents,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_contents {
+  background: #555;
+  border-top-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_contents label,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_contents label {
+  color: #fff;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_contents select,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_contents input,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_contents .ImagePreviewBox td,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_contents select,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_contents input,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_contents .ImagePreviewBox td {
+  background: #333;
+  color: #fff;
+  border-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_top .cke_dialog_footer,
+.color_scheme_dark.cke_auto_dark_mode .cke_reset .cke_bottom .cke_dialog_footer {
+  background: #333;
+  border-top-color: #555;
+}
+.cke_reset .cke_top a:hover,
+.cke_reset .cke_top a:focus,
+.cke_reset .cke_bottom a:hover,
+.cke_reset .cke_bottom a:focus {
+  transition: none;
+}
+.cke_reset .cke_combo__fontsize .cke_combo_button {
+  width: 64px;
+}
+.cke_reset .cke_combo__fontsize .cke_combo_text {
+  width: 30px;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body {
+  background: #333;
+  border-color: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_button_on {
+  background: #000;
+  border-color: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_button_icon,
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_combo_button,
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_button_arrow,
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_button_label {
+  filter: invert(1);
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body.cke_dialog_body {
+  background: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_title {
+  background: #333;
+  color: #fff;
+  border-bottom-color: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_title .cke_dialog_close_button {
+  color: #fff;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_tabs {
+  background: #555;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_tabs .cke_dialog_tab {
+  background: #555;
+  color: #999;
+  border-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_tabs .cke_dialog_tab_selected {
+  background: #777;
+  color: #fff;
+  border-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_contents {
+  background: #555;
+  border-top-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_contents label {
+  color: #fff;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_contents select,
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_contents input,
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_contents .ImagePreviewBox td {
+  background: #333;
+  color: #fff;
+  border-color: #777;
+}
+.color_scheme_dark.cke_auto_dark_mode .cke_dialog_body .cke_dialog_footer {
+  background: #333;
+  border-top-color: #555;
+}
+.xe_content.editable,
+.rhymix_content.editable,
+.cke_wysiwyg_div {
+  white-space: nowrap;
+}
+.xe_content.editable img,
+.xe_content.editable video,
+.rhymix_content.editable img,
+.rhymix_content.editable video,
+.cke_wysiwyg_div img,
+.cke_wysiwyg_div video {
+  max-width: 100%;
+  height: auto;
+}
+.xe_content.editable blockquote,
+.rhymix_content.editable blockquote,
+.cke_wysiwyg_div blockquote {
+  padding: 2px 0;
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 0;
+  border-left-width: 5px;
+  padding-left: 20px;
+  padding-right: 8px;
+}
+.xe_content.editable blockquote:lang(ar),
+.xe_content.editable blockquote:lang(arc),
+.xe_content.editable blockquote:lang(dv),
+.xe_content.editable blockquote:lang(ha),
+.xe_content.editable blockquote:lang(he),
+.xe_content.editable blockquote:lang(khw),
+.xe_content.editable blockquote:lang(ks),
+.xe_content.editable blockquote:lang(ku),
+.xe_content.editable blockquote:lang(ps),
+.xe_content.editable blockquote:lang(fa),
+.xe_content.editable blockquote:lang(ur),
+.xe_content.editable blockquote:lang(yi),
+.rhymix_content.editable blockquote:lang(ar),
+.rhymix_content.editable blockquote:lang(arc),
+.rhymix_content.editable blockquote:lang(dv),
+.rhymix_content.editable blockquote:lang(ha),
+.rhymix_content.editable blockquote:lang(he),
+.rhymix_content.editable blockquote:lang(khw),
+.rhymix_content.editable blockquote:lang(ks),
+.rhymix_content.editable blockquote:lang(ku),
+.rhymix_content.editable blockquote:lang(ps),
+.rhymix_content.editable blockquote:lang(fa),
+.rhymix_content.editable blockquote:lang(ur),
+.rhymix_content.editable blockquote:lang(yi),
+.cke_wysiwyg_div blockquote:lang(ar),
+.cke_wysiwyg_div blockquote:lang(arc),
+.cke_wysiwyg_div blockquote:lang(dv),
+.cke_wysiwyg_div blockquote:lang(ha),
+.cke_wysiwyg_div blockquote:lang(he),
+.cke_wysiwyg_div blockquote:lang(khw),
+.cke_wysiwyg_div blockquote:lang(ks),
+.cke_wysiwyg_div blockquote:lang(ku),
+.cke_wysiwyg_div blockquote:lang(ps),
+.cke_wysiwyg_div blockquote:lang(fa),
+.cke_wysiwyg_div blockquote:lang(ur),
+.cke_wysiwyg_div blockquote:lang(yi) {
+  border-left-width: 0px;
+  border-right-width: 5px;
+  padding-left: 8px;
+  padding-right: 20px;
+}
+

@@ -1,0 +1,2 @@
+<?php /* 2.0.21:site_and_module#29:modules_info:56,52,50:module_srl,mid,browser_title */
+return unserialize('a:2:{i:0;i:1659076951;i:1;a:3:{i:0;O:8:"stdClass":3:{s:10:"module_srl";i:50;s:3:"mid";s:5:"index";s:13:"browser_title";s:7:"Welcome";}i:1;O:8:"stdClass":3:{s:10:"module_srl";i:52;s:3:"mid";s:5:"board";s:13:"browser_title";s:37:"$user_lang->userLang20220728101623002";}i:2;O:8:"stdClass":3:{s:10:"module_srl";i:56;s:3:"mid";s:6:"notice";s:13:"browser_title";s:12:"공지사항";}}}');

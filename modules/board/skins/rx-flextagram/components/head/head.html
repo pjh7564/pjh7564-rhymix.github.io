@@ -1,0 +1,10 @@
+<section class="app-board-head">
+  {@ // 목록 상단 }
+  <include target="category.html" cond="$category_list" />
+  <include target="tools.html" cond="$module_info->category_style === 'select' || $grant->write_document" />
+
+  {@ // 공지 }
+  <include target="notice.html" />
+</section>
+
+<include target="search.html" />

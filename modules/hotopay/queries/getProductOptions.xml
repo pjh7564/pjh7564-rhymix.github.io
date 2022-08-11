@@ -1,0 +1,12 @@
+<query id="getProductOptions" action="select">
+	<tables>
+		<table name="hotopay_product_option" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="product_srl" var="product_srl" />
+		<condition operation="in" column="status" var="status" pipe="and" />
+	</conditions>
+</query>

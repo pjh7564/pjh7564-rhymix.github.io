@@ -1,0 +1,47 @@
+<load target="article-vote.scss" vars="$rxpFlexTheme->variables" />
+<load target="article-vote.js" />
+  
+<!--@if($list_config['voted_count'])-->
+  <div class="app-article-vote" data-target-srl="{$oDocument->document_srl}">
+    {@
+      $isMyVoted = $oDocument->getMyVote() == 1;
+      $voteActiveClassName = $isMyVoted ? 'active' : null;
+    }
+    <a class="app-article-toolbar__item app--is-vote app-tooltip {$voteActiveClassName}" title="좋아요" data-type="up" onclick="alArticleVote(this)">
+      <div class="app-icon">
+        <!--@if($isMyVoted)-->
+          <ion-icon name="heart"></ion-icon>
+        <!--@else-->
+          <ion-icon name="heart-outline"></ion-icon>
+        <!--@end-->
+      </div>
+      <span class="app-article-vote__count">
+        <!--@if($oDocument->get('voted_count') > 0)-->
+        {$oDocument->get('voted_count')}
+        <!--@end-->
+      </span>
+    </a>
+    
+    <!--@if($list_config['blamed_count'])-->
+      {@
+        $isMyBlamed = $oDocument->getMyVote() == -1;
+        $blameActiveClassName = $isMyBlamed ? 'active' : null;
+      }
+      <a class="app-article-toolbar__item app--is-blame app-tooltip {$blameActiveClassName}" title="싫어요" data-type="down" onclick="alArticleVote(this)">
+        <div class="app-icon">
+          <!--@if($isMyBlamed)-->
+            <ion-icon name="heart-dislike"></ion-icon>
+          <!--@else-->
+            <ion-icon name="heart-dislike-outline"></ion-icon>
+          <!--@end-->
+        </div>
+
+        <span class="app-article-vote__count">
+          <!--@if($oDocument->get('blamed_count') > 0)-->
+          {$oDocument->get('blamed_count')}
+          <!--@end-->
+        </span>
+      </a>
+    <!--@endif-->
+  </div>
+<!--@end-->

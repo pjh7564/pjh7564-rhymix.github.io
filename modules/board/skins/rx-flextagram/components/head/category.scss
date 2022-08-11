@@ -1,0 +1,109 @@
+$header-height: 52px;
+
+@mixin mobile {
+  @media (max-width: $mobile-w) {
+    @content;
+  }
+}
+
+.app-head-category {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 2rem;
+
+  @include mobile() {
+    margin-top: -1rem;
+  }
+}
+
+.app-category-child {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+
+  max-height: 400px;
+  min-width: 150px;
+  padding-top: 10px;
+
+  transition: 0.2s ease;
+
+  & > ul {
+    list-style-type: none;
+    padding: 8px 0;
+    margin: 0;
+    overflow-y: auto;
+
+    border-radius: $border-radius-1;
+    background-color: rgba($color-background, 1);
+    box-shadow: rgba(black, 0.2) 0 6px 16px;
+    
+    .color_scheme_dark & {
+      background-color: $color-gray-100;
+      background-color: var(--color-gray-100);
+      box-shadow: $color-background 0 10px 32px;
+      box-shadow: var(--color-background) 0 10px 32px;
+    }
+    
+    & > li {
+      & > a {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 0.75em 1.25rem;
+  
+        color: $color-gray-600;
+        color: var(--color-gray-600);
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+  
+        transition: .2s ease;
+  
+        &:hover {
+          color: $color-black;
+          color: var(--color-black);
+          background-color: $color-gray-100;
+          background-color: var(--color-gray-100);
+        }
+      }
+  
+      &.active > a {
+        color: $color-black;
+        color: var(--color-black);
+      }
+    }
+  }
+}
+
+/* child menu hover */
+.app-category-child {
+  opacity: 0;
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+.app-category > li:hover > .app-category-child {
+  opacity: 1;
+  visibility: visible;
+  user-select: initial;
+  pointer-events: initial;
+}
+
+// 카테고리 오른쪽 검색 아이콘
+.app-category-search {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+
+  color: var(--color-gray-900);
+  font-size: 1.25rem;
+}
